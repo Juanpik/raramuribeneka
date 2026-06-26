@@ -1200,10 +1200,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!guessLivesEl) return;
         guessLivesEl.innerHTML = '';
         for (let i = 0; i < GUESS_MAX_LIVES; i++) {
-            const tri = document.createElement('span');
-            tri.classList.add('guess-life-triangle');
-            if (i >= guessLivesLeft) tri.classList.add('lost');
-            guessLivesEl.appendChild(tri);
+            const heart = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            heart.setAttribute('viewBox', '0 0 24 24');
+            heart.setAttribute('class', 'guess-life-heart' + (i >= guessLivesLeft ? ' lost' : ''));
+            heart.innerHTML = '<path d="M12 20.5C12 20.5 3 15.2 3 8.8C3 5.8 5.2 3.8 7.8 3.8C9.6 3.8 11.1 4.8 12 6.3C12.9 4.8 14.4 3.8 16.2 3.8C18.8 3.8 21 5.8 21 8.8C21 15.2 12 20.5 12 20.5Z"/>';
+            guessLivesEl.appendChild(heart);
         }
     }
 
