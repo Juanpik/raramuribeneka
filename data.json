@@ -1091,132 +1091,6 @@
     },
     {
       "id": 148,
-      "raramuri": "walú",
-      "spanish": "grande",
-      "image": "images/grande.jpg",
-      "category": "Adjetivos"
-    },
-    {
-      "id": 149,
-      "raramuri": "támi",
-      "spanish": "pequeño",
-      "image": "images/pequeno.jpg",
-      "category": "Adjetivos"
-    },
-    {
-      "id": 150,
-      "raramuri": "we akalala",
-      "spanish": "inocente",
-      "image": "images/inocente.jpg",
-      "category": "Adjetivos"
-    },
-    {
-      "id": 151,
-      "raramuri": "kachiámi",
-      "spanish": "risueño",
-      "image": "images/risueno.jpg",
-      "category": "Adjetivos"
-    },
-    {
-      "id": 152,
-      "raramuri": "remoniáme",
-      "spanish": "gris",
-      "image": "images/gris.jpg",
-      "category": "Adjetivos"
-    },
-    {
-      "id": 153,
-      "raramuri": "kebinéame",
-      "spanish": "distraido",
-      "image": "images/distraido.jpg",
-      "category": "Adjetivos"
-    },
-    {
-      "id": 154,
-      "raramuri": "anesiniámi",
-      "spanish": "ruidoso",
-      "image": "images/ruidoso.jpg",
-      "category": "Adjetivos"
-    },
-    {
-      "id": 155,
-      "raramuri": "wegalálau",
-      "spanish": "amable",
-      "image": "images/amable.jpg",
-      "category": "Adjetivos"
-    },
-    {
-      "id": 156,
-      "raramuri": "omóniga",
-      "spanish": "callado",
-      "image": "images/callado.jpg",
-      "category": "Adjetivos"
-    },
-    {
-      "id": 157,
-      "raramuri": "satérli",
-      "spanish": "desierto",
-      "image": "images/desierto.jpg",
-      "category": "Naturaleza"
-    },
-    {
-      "id": 158,
-      "raramuri": "bawí pochí",
-      "spanish": "cascada",
-      "image": "images/cascada.jpg",
-      "category": "Naturaleza"
-    },
-    {
-      "id": 159,
-      "raramuri": "sawála",
-      "spanish": "hoja",
-      "image": "images/hoja.jpg",
-      "category": "Naturaleza"
-    },
-    {
-      "id": 160,
-      "raramuri": "nawáli",
-      "spanish": "raíz",
-      "image": "images/raiz.jpg",
-      "category": "Naturaleza"
-    },
-    {
-      "id": 161,
-      "raramuri": "rarané",
-      "spanish": "trueno",
-      "image": "images/trueno.jpg",
-      "category": "Naturaleza"
-    },
-    {
-      "id": 162,
-      "raramuri": "regogochi",
-      "spanish": "cielo",
-      "image": "images/cielo.jpg",
-      "category": "Naturaleza"
-    },
-    {
-      "id": 163,
-      "raramuri": "rahamá",
-      "spanish": "rama",
-      "image": "images/rama.jpg",
-      "category": "Naturaleza"
-    },
-    {
-      "id": 164,
-      "raramuri": "arcolí",
-      "spanish": "arcoiris",
-      "image": "images/arcoiris.jpg",
-      "category": "Naturaleza"
-    },
-    {
-      "id": 165,
-      "raramuri": "rawé",
-      "spanish": "día",
-      "image": "images/dia.jpg",
-      "category": "Naturaleza"
-    },
-    {
-      "id": 166,
       "raramuri": "kuchiála",
       "spanish": "cama",
       "image": "images/cama.jpg",
@@ -1224,7 +1098,7 @@
       "audio": "audio/kuchiála.wav"
     },
     {
-      "id": 167,
+      "id": 149,
       "raramuri": "gosibéla",
       "spanish": "silla",
       "image": "images/silla.jpg",
@@ -1232,135 +1106,12 @@
       "audio": "audio/gosibléla.wav"
     },
     {
-      "id": 168,
+      "id": 150,
       "raramuri": "era",
       "spanish": "puerta",
       "image": "images/puerta.jpg",
       "category": "Objetos",
       "audio": "audio/era.wav"
-    },
-    {
-      "id": 169,
-      "raramuri": "re'éla",
-      "spanish": "pelota",
-      "image": "images/pelota.jpg",
-      "category": "Objetos",
-      "audio": "audio/re_éla.wav"
-    },
-    {
-      "id": 170,
-      "raramuri": "welá",
-      "spanish": "aretes",
-      "image": "images/aretes.jpg",
-      "category": "Objetos",
-      "audio": "audio/welá.wav"
-    },
-    {
-      "id": 171,
-      "raramuri": "na'jkala",
-      "spanish": "oreja",
-      "image": "images/oreja.jpg",
-      "category": "Partes del cuerpo"
-    },
-    {
-      "id": 172,
-      "raramuri": "mo'óla",
-      "spanish": "cabeza",
-      "image": "images/cabeza.jpg",
-      "category": "Partes del cuerpo"
-    },
-    {
-      "id": 173,
-      "raramuri": "ronóla",
-      "spanish": "pierna",
-      "image": "images/pierna.jpg",
-      "category": "Partes del cuerpo"
-    },
-    {
-      "id": 174,
-      "raramuri": "má'togala",
-      "spanish": "brazo",
-      "image": "images/brazo.jpg",
-      "category": "Partes del cuerpo"
-    },
-    {
-      "id": 175,
-      "raramuri": "chokóbala",
-      "spanish": "codo",
-      "image": "images/codo.jpg",
-      "category": "Partes del cuerpo"
-    },
-    {
-      "id": 176,
-      "raramuri": "banalachí",
-      "spanish": "mejillas",
-      "image": "images/mejillas.jpg",
-      "category": "Partes del cuerpo"
-    },
-    {
-      "id": 177,
-      "raramuri": "ropála",
-      "spanish": "panza",
-      "image": "images/panza.jpg",
-      "category": "Partes del cuerpo"
-    },
-    {
-      "id": 178,
-      "raramuri": "ramé",
-      "spanish": "dientes",
-      "image": "images/dientes.jpg",
-      "category": "Partes del cuerpo"
-    },
-    {
-      "id": 179,
-      "raramuri": "makúsli",
-      "spanish": "dedos",
-      "image": "images/dedos.jpg",
-      "category": "Partes del cuerpo"
-    },
-    {
-      "id": 180,
-      "raramuri": "kochaála",
-      "spanish": "ceja",
-      "image": "images/ceja.jpg",
-      "category": "Partes del cuerpo"
-    },
-    {
-      "id": 181,
-      "raramuri": "sutúchli",
-      "spanish": "uña",
-      "image": "images/una.jpg",
-      "category": "Partes del cuerpo"
-    },
-    {
-      "id": 182,
-      "raramuri": "muchí",
-      "spanish": "bebé",
-      "image": "images/bebe.jpg",
-      "category": "Personas",
-      "audio": "audio/muchí.wav"
-    },
-    {
-      "id": 183,
-      "raramuri": "gemí bitémi",
-      "spanish": "vecino",
-      "image": "images/vecino.jpg",
-      "category": "Personas"
-    },
-    {
-      "id": 184,
-      "raramuri": "tewé",
-      "spanish": "niña",
-      "image": "images/nina.jpg",
-      "category": "Personas",
-      "audio": "audio/tewé.wav"
-    },
-    {
-      "id": 185,
-      "raramuri": "usú",
-      "spanish": "viejita",
-      "image": "images/viejita.jpg",
-      "category": "Personas"
     }
   ],
   "phrases": [
