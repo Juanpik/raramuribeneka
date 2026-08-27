@@ -47,7 +47,7 @@
     },
     {
       "id": 7,
-      "raramuri": "chiwá",
+      "raramuri": "chi'wá",
       "spanish": "leche",
       "image": "images/leche.jpg",
       "category": "Comida y bebida",
@@ -149,11 +149,11 @@
     },
     {
       "id": 21,
-      "raramuri": "bachí",
+      "raramuri": "pa'chíki",
       "spanish": "calabaza",
       "image": "images/calabaza.jpg",
       "category": "Comida y bebida",
-      "audio": "audio/bachí.mp3"
+      "audio": "audio/pa_chiki.mp3"
     },
     {
       "id": 22,
@@ -194,7 +194,7 @@
     },
     {
       "id": 27,
-      "raramuri": "Kobísi",
+      "raramuri": "kobísi",
       "spanish": "pinole",
       "image": "images/pinole.jpg",
       "category": "Comida y bebida",
@@ -1198,48 +1198,48 @@
   "phrases": [
     {
       "id": 1001,
-      "raramuri": "Kuira ba!",
-      "spanish": "¡Hola! / ¡Buenos días!"
+      "raramuri": "kuira ba!",
+      "spanish": "¡hola! / ¡buenos días!"
     },
     {
       "id": 1002,
-      "raramuri": "Matetera ba.",
-      "spanish": "Gracias."
+      "raramuri": "matetera ba.",
+      "spanish": "gracias."
     },
     {
       "id": 1003,
-      "raramuri": "¿Chú mu rewé?",
-      "spanish": "¿Cómo te llamas?"
+      "raramuri": "¿chú mu rewé?",
+      "spanish": "¿cómo te llamas?"
     },
     {
       "id": 1004,
-      "raramuri": "Nijé rewalá ko jú...",
-      "spanish": "Mi nombre es..."
+      "raramuri": "nijé rewalá ko jú...",
+      "spanish": "mi nombre es..."
     },
     {
       "id": 1005,
-      "raramuri": "Ganíraba",
-      "spanish": "Con mucho gusto"
+      "raramuri": "ganíraba",
+      "spanish": "con mucho gusto"
     },
     {
       "id": 1006,
-      "raramuri": "Ariósaba",
-      "spanish": "Adiós"
+      "raramuri": "ariósaba",
+      "spanish": "adiós"
     },
     {
       "id": 1007,
-      "raramuri": "Rarámuri ra0ichaga beninare ne",
-      "spanish": "Quiero aprender rarámuri."
+      "raramuri": "rarámuri ra0ichaga beninare ne",
+      "spanish": "quiero aprender rarámuri."
     },
     {
       "id": 1008,
-      "raramuri": "Tabiré námane",
-      "spanish": "No entiendo"
+      "raramuri": "tabiré námane",
+      "spanish": "no entiendo"
     },
     {
       "id": 1009,
-      "raramuri": "¿Cha anaríame ju ye tábiri?",
-      "spanish": "¿Que nombre tiene esta cosa?"
+      "raramuri": "¿cha anaríame ju ye tábiri?",
+      "spanish": "¿que nombre tiene esta cosa?"
     }
   ]
 }
