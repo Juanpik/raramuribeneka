@@ -1112,6 +1112,87 @@
       "image": "images/puerta.jpg",
       "category": "Objetos",
       "audio": "audio/era.wav"
+    },
+    {
+      "spanish": "bebé",
+      "raramuri": "muchí",
+      "category": "Personas",
+      "image": "images/bebe.jpg",
+      "audio": "audio/muchí.wav",
+      "id": 151
+    },
+    {
+      "spanish": "niña",
+      "raramuri": "tewé",
+      "category": "Personas",
+      "image": "images/nina.jpg",
+      "audio": "audio/tewé.wav",
+      "id": 152
+    },
+    {
+      "spanish": "viejita",
+      "raramuri": "usí",
+      "category": "Personas",
+      "image": "images/viejita.jpg",
+      "id": 153
+    },
+    {
+      "spanish": "vecino",
+      "raramuri": "gemá bitému",
+      "category": "Personas",
+      "image": "images/vecino.jpg",
+      "id": 154
+    },
+    {
+      "spanish": "pelota",
+      "raramuri": "re'éla",
+      "category": "Objetos",
+      "image": "images/pelota.jpg",
+      "audio": "audio/re_éla.wav",
+      "id": 155
+    },
+    {
+      "spanish": "aretes",
+      "raramuri": "welá",
+      "category": "Objetos",
+      "image": "images/aretes.jpg",
+      "audio": "audio/welá.wav",
+      "id": 156
+    },
+    {
+      "spanish": "hoja",
+      "raramuri": "sawála",
+      "category": "Naturaleza",
+      "image": "images/hoja.jpg",
+      "id": 157
+    },
+    {
+      "spanish": "rama",
+      "raramuri": "rahamé",
+      "category": "Naturaleza",
+      "image": "images/rama.jpg",
+      "id": 158
+    },
+    {
+      "spanish": "raíz",
+      "raramuri": "nawíli",
+      "category": "Naturaleza",
+      "image": "images/raiz.jpg",
+      "id": 159
+    },
+    {
+      "spanish": "trueno",
+      "raramuri": "rarané",
+      "category": "Naturaleza",
+      "image": "images/trueno.jpg",
+      "id": 160
+    },
+    {
+      "spanish": "arcoiris",
+      "raramuri": "arcolí",
+      "category": "Naturaleza",
+      "image": "images/arcoiris.jpg",
+      "id": 161
     }
   ],
   "phrases": [
