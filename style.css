@@ -118,8 +118,6 @@ a, button, input, select { font-family: inherit; }
    ========================================================= */
 .site-header {
     background-color: var(--white);
-    background-image: url("data:image/svg+xml,%3Csvg%20width%3D%228%22%20height%3D%228%22%20viewBox%3D%220%200%208%208%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M0%200L8%208M0%208L8%200%22%20stroke%3D%22%23E0102A%22%20stroke-width%3D%220.4%22%20opacity%3D%220.18%22/%3E%3C/svg%3E");
-    background-size: 8px 8px;
     color: var(--rojo-700);
     position: relative;
 }
@@ -136,8 +134,6 @@ a, button, input, select { font-family: inherit; }
 
 .main-nav {
     background-color: var(--rojo-700);
-    background-image: url("data:image/svg+xml,%3Csvg%20width%3D%228%22%20height%3D%228%22%20viewBox%3D%220%200%208%208%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M0%200L8%208M0%208L8%200%22%20stroke%3D%22%237A0A18%22%20stroke-width%3D%220.5%22%20opacity%3D%220.4%22/%3E%3C/svg%3E");
-    background-size: 8px 8px;
     overflow-x: auto;
     scrollbar-width: thin;
 }
