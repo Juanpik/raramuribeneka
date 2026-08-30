@@ -308,8 +308,8 @@
     {
       "id": 42,
       "raramuri": "chérame",
-      "spanish": "anciano",
-      "image": "images/anciano.jpg",
+      "spanish": "viejito",
+      "image": "images/viejito.jpg",
       "category": "Personas"
     },
     {
@@ -1193,6 +1193,153 @@
       "category": "Naturaleza",
       "image": "images/arcoiris.jpg",
       "id": 161
+    },
+    {
+      "id": 162,
+      "spanish": "águila",
+      "raramuri": "",
+      "category": "Animales",
+      "image": "images/aguila.jpg"
+    },
+    {
+      "id": 163,
+      "spanish": "ardilla",
+      "raramuri": "",
+      "category": "Animales",
+      "image": "images/ardilla.jpg"
+    },
+    {
+      "id": 164,
+      "spanish": "tortuga",
+      "raramuri": "",
+      "category": "Animales",
+      "image": "images/tortuga.jpg"
+    },
+    {
+      "id": 165,
+      "spanish": "pato",
+      "raramuri": "",
+      "category": "Animales",
+      "image": "images/pato.jpg"
+    },
+    {
+      "id": 166,
+      "spanish": "alacrán",
+      "raramuri": "",
+      "category": "Animales",
+      "image": "images/alacran.jpg"
+    },
+    {
+      "id": 167,
+      "spanish": "sahuaro",
+      "raramuri": "",
+      "category": "Naturaleza",
+      "image": "images/sahuaro.jpg"
+    },
+    {
+      "id": 168,
+      "spanish": "pitahaya",
+      "raramuri": "",
+      "category": "Comida y bebida",
+      "image": "images/pitahaya.jpg"
+    },
+    {
+      "id": 169,
+      "spanish": "tamal",
+      "raramuri": "",
+      "category": "Comida y bebida",
+      "image": "images/tamal.jpg"
+    },
+    {
+      "id": 170,
+      "spanish": "caldo",
+      "raramuri": "",
+      "category": "Comida y bebida",
+      "image": "images/caldo.jpg"
+    },
+    {
+      "id": 171,
+      "spanish": "metate",
+      "raramuri": "",
+      "category": "Objetos y hogar",
+      "image": "images/metate.jpg"
+    },
+    {
+      "id": 172,
+      "spanish": "bule",
+      "raramuri": "",
+      "category": "Objetos y hogar",
+      "image": "images/bule.jpg"
+    },
+    {
+      "id": 173,
+      "spanish": "petate",
+      "raramuri": "",
+      "category": "Objetos y hogar",
+      "image": "images/petate.jpg"
+    },
+    {
+      "id": 174,
+      "spanish": "cabeza",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/cabeza.jpg"
+    },
+    {
+      "id": 175,
+      "spanish": "dientes",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/dientes.jpg"
+    },
+    {
+      "id": 176,
+      "spanish": "brazo",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/brazo.jpg"
+    },
+    {
+      "id": 177,
+      "spanish": "pierna",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/pierna.jpg"
+    },
+    {
+      "id": 178,
+      "spanish": "codo",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/codo.jpg"
+    },
+    {
+      "id": 179,
+      "spanish": "mejillas",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/mejillas.jpg"
+    },
+    {
+      "id": 180,
+      "spanish": "panza",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/panza.jpg"
+    },
+    {
+      "id": 181,
+      "spanish": "ombligo",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/ombligo.jpg"
+    },
+    {
+      "id": 182,
+      "spanish": "dedos",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/dedos.jpg"
     }
   ],
   "phrases": [
