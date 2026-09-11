@@ -374,10 +374,10 @@
             });
           }
         }
-      } else if (hash === 'frases' || hash === 'phrases') {
+      } else if (hash === 'frases' || hash === 'phrases' || urlParams.get('tab') === 'phrases' || urlParams.get('tab') === 'frases') {
         const tab = document.querySelector('.nav-tab[data-section="phrases"]');
         if (tab) tab.click();
-      } else if (hash === 'proyecto' || hash === 'about') {
+      } else if (hash === 'proyecto' || hash === 'about' || urlParams.get('tab') === 'about' || urlParams.get('tab') === 'proyecto') {
         const tab = document.querySelector('.nav-tab[data-section="about"]');
         if (tab) tab.click();
       } else if (urlParams.get('tab') === 'practice') {

@@ -2744,13 +2744,6 @@ body::before {
   border-radius: var(--radius-md);
   padding: 18px 22px;
   margin-bottom: 24px;
-  display: flex;
-  gap: 16px;
-}
-
-.callout-symbol {
-  font-size: 1.6rem;
-  flex-shrink: 0;
 }
 
 .callout-text h4 {
