@@ -1,0 +1,1385 @@
+window.APP_DATA = {
+  "lexicon": [
+    {
+      "id": 1,
+      "raramuri": "aká",
+      "spanish": "huarache",
+      "image": "images/huarache.jpg",
+      "category": "Vestimenta",
+      "audio": "audio/aká.wav"
+    },
+    {
+      "id": 2,
+      "raramuri": "wawí",
+      "spanish": "agua",
+      "image": "images/agua.jpg",
+      "category": "Comida y bebida",
+      "audio": "audio/wawí.mp3"
+    },
+    {
+      "id": 3,
+      "raramuri": "basána",
+      "spanish": "manzana",
+      "image": "images/manzana.jpg",
+      "category": "Comida y bebida"
+    },
+    {
+      "id": 4,
+      "raramuri": "o'wa",
+      "spanish": "borrego",
+      "image": "images/borrego.jpg",
+      "category": "Animales",
+      "audio": "audio/o_wá.mp3"
+    },
+    {
+      "id": 5,
+      "raramuri": "busí",
+      "spanish": "ojos",
+      "image": "images/ojos.jpg",
+      "category": "Partes del cuerpo"
+    },
+    {
+      "id": 6,
+      "raramuri": "chaméli",
+      "spanish": "lengua",
+      "image": "images/lengua.jpg",
+      "category": "Partes del cuerpo"
+    },
+    {
+      "id": 7,
+      "raramuri": "chi'wá",
+      "spanish": "leche",
+      "image": "images/leche.jpg",
+      "category": "Comida y bebida",
+      "audio": "audio/chi_wá.mp3"
+    },
+    {
+      "id": 8,
+      "raramuri": "chiwáwara",
+      "spanish": "bolsa",
+      "image": "images/bolsa.jpg",
+      "category": "Objetos"
+    },
+    {
+      "id": 9,
+      "raramuri": "molúchi",
+      "spanish": "chivito",
+      "image": "images/chivito.jpg",
+      "category": "Animales",
+      "audio": "audio/molúchi.mp3"
+    },
+    {
+      "id": 10,
+      "raramuri": "chomála",
+      "spanish": "nariz",
+      "image": "images/nariz.jpg",
+      "category": "Partes del cuerpo"
+    },
+    {
+      "id": 11,
+      "raramuri": "cho'mágame",
+      "spanish": "café",
+      "image": "images/color_cafe.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 12,
+      "raramuri": "chókami",
+      "spanish": "negro",
+      "image": "images/negro.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 13,
+      "raramuri": "tanchomiami",
+      "spanish": "morado",
+      "image": "images/morado.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 14,
+      "raramuri": "golowí",
+      "spanish": "pájaro",
+      "image": "images/pajaro.jpg",
+      "category": "Animales",
+      "audio": "audio/golowí.mp3"
+    },
+    {
+      "id": 15,
+      "raramuri": "go'á",
+      "spanish": "comer",
+      "image": "images/comer.jpg",
+      "category": "Verbos"
+    },
+    {
+      "id": 16,
+      "raramuri": "gochí",
+      "spanish": "dormir",
+      "image": "images/dormir.jpg",
+      "category": "Verbos"
+    },
+    {
+      "id": 17,
+      "raramuri": "eká",
+      "spanish": "viento",
+      "image": "images/viento.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 18,
+      "raramuri": "weláka",
+      "spanish": "nopal",
+      "image": "images/nopal.jpg",
+      "category": "Naturaleza",
+      "audio": "audio/weláka.mp3"
+    },
+    {
+      "id": 19,
+      "raramuri": "irápata",
+      "spanish": "abrir",
+      "image": "images/abrir.jpg",
+      "category": "Verbos"
+    },
+    {
+      "id": 20,
+      "raramuri": "kajé",
+      "spanish": "café",
+      "image": "images/cafe.jpg",
+      "category": "Comida y bebida"
+    },
+    {
+      "id": 21,
+      "raramuri": "pa'chíki",
+      "spanish": "calabaza",
+      "image": "images/calabaza.jpg",
+      "category": "Comida y bebida",
+      "audio": "audio/pa_chiki.mp3"
+    },
+    {
+      "id": 22,
+      "raramuri": "bataróne",
+      "spanish": "pantalones",
+      "image": "images/pantalones.jpg",
+      "category": "Vestimenta"
+    },
+    {
+      "id": 23,
+      "raramuri": "kawí",
+      "spanish": "monte",
+      "image": "images/monte.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 24,
+      "raramuri": "gepalí",
+      "spanish": "nieve",
+      "image": "images/nieve.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 25,
+      "raramuri": "asolí",
+      "spanish": "quelite",
+      "image": "images/quelite.jpg",
+      "category": "Comida y bebida",
+      "audio": "audio/asolí.mp3"
+    },
+    {
+      "id": 26,
+      "raramuri": "kiyóchi",
+      "spanish": "zorro",
+      "image": "images/zorro.jpg",
+      "category": "Animales",
+      "audio": "audio/kiyóchi.mp3"
+    },
+    {
+      "id": 27,
+      "raramuri": "kobísi",
+      "spanish": "pinole",
+      "image": "images/pinole.jpg",
+      "category": "Comida y bebida",
+      "audio": "audio/kobísi.mp3"
+    },
+    {
+      "id": 28,
+      "raramuri": "kochí",
+      "spanish": "cerdo",
+      "image": "images/cerdo.jpg",
+      "category": "Animales",
+      "audio": "audio/kóchi.mp3"
+    },
+    {
+      "id": 29,
+      "raramuri": "kú",
+      "spanish": "leña",
+      "image": "images/lena.jpg",
+      "category": "Objetos",
+      "audio": "audio/kú.wav"
+    },
+    {
+      "id": 30,
+      "raramuri": "kawé",
+      "spanish": "caballo",
+      "image": "images/caballo.jpg",
+      "category": "Animales",
+      "audio": "audio/kawé.mp3"
+    },
+    {
+      "id": 31,
+      "raramuri": "kusabí",
+      "spanish": "cereza",
+      "image": "images/cereza.jpg",
+      "category": "Comida y bebida"
+    },
+    {
+      "id": 32,
+      "raramuri": "mechá",
+      "spanish": "luna",
+      "image": "images/luna.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 33,
+      "raramuri": "musa",
+      "spanish": "gato",
+      "image": "images/gato.jpg",
+      "category": "Animales",
+      "audio": "audio/musá.mp3"
+    },
+    {
+      "id": 34,
+      "raramuri": "mukí",
+      "spanish": "mujer",
+      "image": "images/mujer.jpg",
+      "category": "Personas",
+      "audio": "audio/mukí.wav"
+    },
+    {
+      "id": 35,
+      "raramuri": "muní",
+      "spanish": "frijol",
+      "image": "images/frijol.jpg",
+      "category": "Comida y bebida"
+    },
+    {
+      "id": 36,
+      "raramuri": "nahí",
+      "spanish": "fuego",
+      "image": "images/fuego.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 37,
+      "raramuri": "naká",
+      "spanish": "oido",
+      "image": "images/oido.jpg",
+      "category": "Partes del cuerpo"
+    },
+    {
+      "id": 38,
+      "raramuri": "nákaroli",
+      "spanish": "mariposa",
+      "image": "images/mariposa.jpg",
+      "category": "Animales",
+      "audio": "audio/na_karoli.mp3"
+    },
+    {
+      "id": 39,
+      "raramuri": "apacha",
+      "spanish": "camisa",
+      "image": "images/camisa.jpg",
+      "category": "Vestimenta",
+      "audio": "audio/apácha.wav"
+    },
+    {
+      "id": 40,
+      "raramuri": "nolí",
+      "spanish": "nube",
+      "image": "images/nube.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 41,
+      "raramuri": "notsá",
+      "spanish": "trabajar",
+      "image": "images/trabajar.jpg",
+      "category": "Verbos"
+    },
+    {
+      "id": 42,
+      "raramuri": "chérame",
+      "spanish": "viejito",
+      "image": "images/viejito.jpg",
+      "category": "Personas"
+    },
+    {
+      "id": 43,
+      "raramuri": "ojí",
+      "spanish": "oso",
+      "image": "images/oso.jpg",
+      "category": "Animales",
+      "audio": "audio/ojí.mp3"
+    },
+    {
+      "id": 44,
+      "raramuri": "rójua",
+      "spanish": "arbol",
+      "image": "images/arbol.jpg",
+      "category": "Naturaleza",
+      "audio": "audio/okó.mp3"
+    },
+    {
+      "id": 45,
+      "raramuri": "okochí",
+      "spanish": "perro",
+      "image": "images/perro.jpg",
+      "category": "Animales",
+      "audio": "audio/okochí.mp3"
+    },
+    {
+      "id": 46,
+      "raramuri": "rejói",
+      "spanish": "hombre",
+      "image": "images/hombre.jpg",
+      "category": "Personas",
+      "audio": "audio/rejói.wav"
+    },
+    {
+      "id": 47,
+      "raramuri": "páno",
+      "spanish": "pan",
+      "image": "images/pan.jpg",
+      "category": "Comida y bebida"
+    },
+    {
+      "id": 48,
+      "raramuri": "ra'ícha",
+      "spanish": "hablar",
+      "image": "images/hablar.jpg",
+      "category": "Verbos"
+    },
+    {
+      "id": 49,
+      "raramuri": "ronóla",
+      "spanish": "pie",
+      "image": "images/pie.jpg",
+      "category": "Partes del cuerpo"
+    },
+    {
+      "id": 50,
+      "raramuri": "rarinéa",
+      "spanish": "comerciar",
+      "image": "images/comerciar.jpg",
+      "category": "Verbos"
+    },
+    {
+      "id": 51,
+      "raramuri": "rayénari",
+      "spanish": "sol",
+      "image": "images/sol.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 52,
+      "raramuri": "reméke",
+      "spanish": "tortilla",
+      "image": "images/tortilla.jpg",
+      "category": "Comida y bebida",
+      "audio": "audio/reméke.mp3"
+    },
+    {
+      "id": 53,
+      "raramuri": "rinichí",
+      "spanish": "boca",
+      "image": "images/boca.jpg",
+      "category": "Partes del cuerpo"
+    },
+    {
+      "id": 54,
+      "raramuri": "láka",
+      "spanish": "sangre",
+      "image": "images/sangre.jpg",
+      "category": "Partes del cuerpo"
+    },
+    {
+      "id": 55,
+      "raramuri": "repópa",
+      "spanish": "espalda",
+      "image": "images/espalda.jpg",
+      "category": "Partes del cuerpo"
+    },
+    {
+      "id": 56,
+      "raramuri": "rimó",
+      "spanish": "sapo",
+      "image": "images/sapo.jpg",
+      "category": "Animales"
+    },
+    {
+      "id": 57,
+      "raramuri": "relói",
+      "spanish": "papa",
+      "image": "images/papa.jpg",
+      "category": "Comida y bebida",
+      "audio": "audio/relói.mp3"
+    },
+    {
+      "id": 58,
+      "raramuri": "resté",
+      "spanish": "piedra",
+      "image": "images/piedra.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 59,
+      "raramuri": "bosí",
+      "spanish": "buho",
+      "image": "images/buho.jpg",
+      "category": "Animales",
+      "audio": "audio/bosí.mp3"
+    },
+    {
+      "id": 60,
+      "raramuri": "rochá",
+      "spanish": "lagartija",
+      "image": "images/lagartija.jpg",
+      "category": "Animales",
+      "audio": "audio/rochá.mp3"
+    },
+    {
+      "id": 61,
+      "raramuri": "rojíki",
+      "spanish": "bellota",
+      "image": "images/bellota.jpg",
+      "category": "Comida y bebida",
+      "audio": "audio/rojíki.mp3"
+    },
+    {
+      "id": 62,
+      "raramuri": "rocó",
+      "spanish": "noche",
+      "image": "images/noche.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 63,
+      "raramuri": "rochí",
+      "spanish": "pez",
+      "image": "images/pez.jpg",
+      "category": "Animales",
+      "audio": "audio/rochí.mp3"
+    },
+    {
+      "id": 64,
+      "raramuri": "rosákame",
+      "spanish": "blanco",
+      "image": "images/blanco.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 65,
+      "raramuri": "sawaruami",
+      "spanish": "amarillo",
+      "image": "images/amarillo.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 66,
+      "raramuri": "sewá",
+      "spanish": "flor",
+      "image": "images/flor.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 67,
+      "raramuri": "secála",
+      "spanish": "mano",
+      "image": "images/mano.jpg",
+      "category": "Partes del cuerpo"
+    },
+    {
+      "id": 68,
+      "raramuri": "sikóri",
+      "spanish": "jarro",
+      "image": "images/jarro.jpg",
+      "category": "Objetos"
+    },
+    {
+      "id": 69,
+      "raramuri": "muchá",
+      "spanish": "hormiga",
+      "image": "images/hormiga.jpg",
+      "category": "Animales",
+      "audio": "audio/muchá.mp3"
+    },
+    {
+      "id": 70,
+      "raramuri": "sinói",
+      "spanish": "serpiente",
+      "image": "images/serpiente.jpg",
+      "category": "Animales",
+      "audio": "audio/sinói.mp3"
+    },
+    {
+      "id": 71,
+      "raramuri": "shipúcha",
+      "spanish": "falda",
+      "image": "images/falda.jpg",
+      "category": "Vestimenta",
+      "audio": "audio/shispúcha.wav"
+    },
+    {
+      "id": 72,
+      "raramuri": "soulí",
+      "spanish": "mosca",
+      "image": "images/mosca.jpg",
+      "category": "Animales"
+    },
+    {
+      "id": 73,
+      "raramuri": "sitákame",
+      "spanish": "rojo",
+      "image": "images/rojo.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 74,
+      "raramuri": "siyonami",
+      "spanish": "azul",
+      "image": "images/azul.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 75,
+      "raramuri": "siyóname",
+      "spanish": "verde",
+      "image": "images/verde.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 76,
+      "raramuri": "sepolí",
+      "spanish": "estrella",
+      "image": "images/estrella.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 77,
+      "raramuri": "pachíki",
+      "spanish": "maíz",
+      "image": "images/maiz.jpg",
+      "category": "Comida y bebida",
+      "audio": "audio/pa_chiki.mp3"
+    },
+    {
+      "id": 78,
+      "raramuri": "sulachí",
+      "spanish": "corazon",
+      "image": "images/corazon.jpg",
+      "category": "Partes del cuerpo"
+    },
+    {
+      "id": 79,
+      "raramuri": "o'tolí",
+      "spanish": "gallina",
+      "image": "images/gallina.jpg",
+      "category": "Animales",
+      "audio": "audio/o_toli.mp3"
+    },
+    {
+      "id": 80,
+      "raramuri": "towí",
+      "spanish": "niño",
+      "image": "images/nino.jpg",
+      "category": "Personas",
+      "audio": "audio/towí.wav"
+    },
+    {
+      "id": 81,
+      "raramuri": "túrio",
+      "spanish": "trigo",
+      "image": "images/trigo.jpg",
+      "category": "Comida y bebida"
+    },
+    {
+      "id": 82,
+      "raramuri": "ukí",
+      "spanish": "lluvia",
+      "image": "images/lluvia.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 83,
+      "raramuri": "atónari",
+      "spanish": "atole",
+      "image": "images/atole.jpg",
+      "category": "Comida y bebida",
+      "audio": "audio/atólari.mp3"
+    },
+    {
+      "id": 84,
+      "raramuri": "we'e",
+      "spanish": "tierra",
+      "image": "images/tierra.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 85,
+      "raramuri": "wikowí",
+      "spanish": "hongo",
+      "image": "images/hongo.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 86,
+      "raramuri": "tisora",
+      "spanish": "bastón",
+      "image": "images/baston.jpg",
+      "category": "Objetos"
+    },
+    {
+      "id": 87,
+      "raramuri": "wewíto",
+      "spanish": "burro",
+      "image": "images/burro.jpg",
+      "category": "Animales",
+      "audio": "audio/wewíto.mp3"
+    },
+    {
+      "id": 88,
+      "raramuri": "ripiáka",
+      "spanish": "cuchillo",
+      "image": "images/cuchillo.jpg",
+      "category": "Objetos",
+      "audio": "audio/ripiáka.wav"
+    },
+    {
+      "id": 89,
+      "raramuri": "reméla",
+      "spanish": "comal",
+      "image": "images/comal.jpg",
+      "category": "Objetos",
+      "audio": "audio/reméla.wav"
+    },
+    {
+      "id": 90,
+      "raramuri": "pichiála",
+      "spanish": "escoba",
+      "image": "images/escoba.jpg",
+      "category": "Objetos",
+      "audio": "audio/pichiála.wav"
+    },
+    {
+      "id": 91,
+      "raramuri": "go'áchi",
+      "spanish": "sombrero",
+      "image": "images/sombrero.jpg",
+      "category": "Vestimenta"
+    },
+    {
+      "id": 92,
+      "raramuri": "osilí",
+      "spanish": "papel",
+      "image": "images/papel.jpg",
+      "category": "Objetos"
+    },
+    {
+      "id": 93,
+      "raramuri": "isíla",
+      "spanish": "tijera",
+      "image": "images/tijera.jpg",
+      "category": "Objetos",
+      "audio": "audio/isíla.wav"
+    },
+    {
+      "id": 94,
+      "raramuri": "chikúli",
+      "spanish": "ratón",
+      "image": "images/raton.jpg",
+      "category": "Animales",
+      "audio": "audio/chikúli.mp3"
+    },
+    {
+      "id": 95,
+      "raramuri": "sarápi",
+      "spanish": "cobija",
+      "image": "images/cobija.jpg",
+      "category": "Objetos",
+      "audio": "audio/sarápi.wav"
+    },
+    {
+      "id": 96,
+      "raramuri": "chomalí",
+      "spanish": "venado",
+      "image": "images/venado.jpg",
+      "category": "Animales"
+    },
+    {
+      "id": 97,
+      "raramuri": "wasá",
+      "spanish": "cocinar",
+      "image": "images/cocinar.jpg",
+      "category": "Verbos"
+    },
+    {
+      "id": 98,
+      "raramuri": "namí",
+      "spanish": "oir",
+      "image": "images/oir.jpg",
+      "category": "Verbos"
+    },
+    {
+      "id": 99,
+      "raramuri": "nigá",
+      "spanish": "ver",
+      "image": "images/ver.jpg",
+      "category": "Verbos"
+    },
+    {
+      "id": 100,
+      "raramuri": "wuía",
+      "spanish": "cuerda",
+      "image": "images/cuerda.jpg",
+      "category": "Objetos",
+      "audio": "audio/wuía.wav"
+    },
+    {
+      "id": 101,
+      "raramuri": "semiámi",
+      "spanish": "músico",
+      "image": "images/musico.jpg",
+      "category": "Personas",
+      "audio": "audio/semiámi.wav"
+    },
+    {
+      "id": 102,
+      "raramuri": "ónami",
+      "spanish": "doctor",
+      "image": "images/doctor.jpg",
+      "category": "Personas"
+    },
+    {
+      "id": 103,
+      "raramuri": "carí",
+      "spanish": "casa",
+      "image": "images/casa.jpg",
+      "category": "Lugares"
+    },
+    {
+      "id": 104,
+      "raramuri": "ri'obá",
+      "spanish": "iglesia",
+      "image": "images/iglesia.jpg",
+      "category": "Lugares"
+    },
+    {
+      "id": 105,
+      "raramuri": "chu'wechi",
+      "spanish": "cementerio",
+      "image": "images/cementerio.jpg",
+      "category": "Lugares"
+    },
+    {
+      "id": 106,
+      "raramuri": "eskuélachi",
+      "spanish": "escuela",
+      "image": "images/escuela.jpg",
+      "category": "Lugares"
+    },
+    {
+      "id": 107,
+      "raramuri": "warúrachi",
+      "spanish": "ciudad",
+      "image": "images/ciudad.jpg",
+      "category": "Lugares"
+    },
+    {
+      "id": 108,
+      "raramuri": "walú wawíchi",
+      "spanish": "mar",
+      "image": "images/mar.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 109,
+      "raramuri": "tesóchi",
+      "spanish": "cueva",
+      "image": "images/cueva.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 110,
+      "raramuri": "tiéndachi",
+      "spanish": "tienda",
+      "image": "images/tienda.jpg",
+      "category": "Lugares"
+    },
+    {
+      "id": 111,
+      "raramuri": "kolachí",
+      "spanish": "barranca",
+      "image": "images/barranca.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 112,
+      "raramuri": "pobóro",
+      "spanish": "pueblo",
+      "image": "images/pueblo.jpg",
+      "category": "Lugares"
+    },
+    {
+      "id": 113,
+      "raramuri": "namúti ichíru",
+      "spanish": "huerta",
+      "image": "images/huerta.jpg",
+      "category": "Lugares"
+    },
+    {
+      "id": 114,
+      "raramuri": "bajíchi",
+      "spanish": "manantial",
+      "image": "images/manantial.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 115,
+      "raramuri": "gomíchi",
+      "spanish": "rio",
+      "image": "images/rio.jpg",
+      "category": "Naturaleza"
+    },
+    {
+      "id": 116,
+      "raramuri": "gológa",
+      "spanish": "collar",
+      "image": "images/collar.jpg",
+      "category": "Vestimenta"
+    },
+    {
+      "id": 117,
+      "raramuri": "rowí",
+      "spanish": "conejo",
+      "image": "images/conejo.jpg",
+      "category": "Animales"
+    },
+    {
+      "id": 118,
+      "raramuri": "apacha",
+      "spanish": "blusa",
+      "image": "images/blusa.jpg",
+      "category": "Vestimenta",
+      "audio": "audio/apáicha.wav"
+    },
+    {
+      "id": 119,
+      "raramuri": "ko'yera",
+      "spanish": "bandana",
+      "image": "images/bandana.jpg",
+      "category": "Vestimenta",
+      "audio": "audio/ko_yera.wav"
+    },
+    {
+      "id": 120,
+      "raramuri": "pulága",
+      "spanish": "faja",
+      "image": "images/faja.jpg",
+      "category": "Vestimenta",
+      "audio": "audio/pulága.wav"
+    },
+    {
+      "id": 121,
+      "raramuri": "tagóra",
+      "spanish": "taparrabo",
+      "image": "images/taparrabo.jpg",
+      "category": "Vestimenta",
+      "audio": "audio/tagóra.wav"
+    },
+    {
+      "id": 122,
+      "raramuri": "benereami",
+      "spanish": "maestro",
+      "image": "images/maestro.jpg",
+      "category": "Personas",
+      "audio": "audio/benereami.wav"
+    },
+    {
+      "id": 123,
+      "raramuri": "beté",
+      "spanish": "habitar",
+      "image": "images/habitar.jpg",
+      "category": "Verbos"
+    },
+    {
+      "id": 124,
+      "raramuri": "osá",
+      "spanish": "escribir",
+      "image": "images/escribir.jpg",
+      "category": "Verbos"
+    },
+    {
+      "id": 125,
+      "raramuri": "zapá",
+      "spanish": "carne",
+      "image": "images/carne.jpg",
+      "category": "Comida y bebida",
+      "audio": "audio/sapá.mp3"
+    },
+    {
+      "id": 126,
+      "raramuri": "ripulá",
+      "spanish": "hacha",
+      "image": "images/hacha.jpg",
+      "category": "Objetos",
+      "audio": "audio/ripulá.wav"
+    },
+    {
+      "id": 127,
+      "raramuri": "walí",
+      "spanish": "cesta",
+      "image": "images/cesta.jpg",
+      "category": "Objetos",
+      "audio": "audio/walí.wav"
+    },
+    {
+      "id": 128,
+      "raramuri": "natéame",
+      "spanish": "caro",
+      "image": "images/caro.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 129,
+      "raramuri": "sapéame",
+      "spanish": "gordo",
+      "image": "images/gordo.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 130,
+      "raramuri": "ta rejoi",
+      "spanish": "chaparro",
+      "image": "images/chaparro.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 131,
+      "raramuri": "wa'lú",
+      "spanish": "alto",
+      "image": "images/alto.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 132,
+      "raramuri": "o'monira",
+      "spanish": "triste",
+      "image": "images/triste.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 133,
+      "raramuri": "nego weganíli",
+      "spanish": "alegre",
+      "image": "images/alegre.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 134,
+      "raramuri": "chití",
+      "spanish": "feo",
+      "image": "images/feo.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 135,
+      "raramuri": "semáti",
+      "spanish": "bonito",
+      "image": "images/bonito.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 136,
+      "raramuri": "rulá",
+      "spanish": "frio",
+      "image": "images/frio.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 137,
+      "raramuri": "retámi",
+      "spanish": "caliente",
+      "image": "images/caliente.jpg",
+      "category": "Adjetivos"
+    },
+    {
+      "id": 138,
+      "raramuri": "wasí",
+      "spanish": "vaca",
+      "image": "images/vaca.jpg",
+      "category": "Animales",
+      "audio": "audio/wasí.mp3"
+    },
+    {
+      "id": 140,
+      "raramuri": "solí",
+      "spanish": "gusano",
+      "image": "images/gusano.jpg",
+      "category": "Animales",
+      "audio": "audio/solí.mp3"
+    },
+    {
+      "id": 141,
+      "raramuri": "basachí",
+      "spanish": "coyote",
+      "image": "images/coyote.jpg",
+      "category": "Animales",
+      "audio": "audio/basachí.mp3"
+    },
+    {
+      "id": 142,
+      "raramuri": "milúchili",
+      "spanish": "araña",
+      "image": "images/arana.jpg",
+      "category": "Animales",
+      "audio": "audio/milúchili.mp3"
+    },
+    {
+      "id": 143,
+      "raramuri": "pasúchi",
+      "spanish": "zorrillo",
+      "image": "images/zorrillo.jpg",
+      "category": "Animales",
+      "audio": "audio/pasúchi.mp3"
+    },
+    {
+      "id": 144,
+      "raramuri": "koná",
+      "spanish": "sal",
+      "image": "images/sal.jpg",
+      "category": "Comida y bebida"
+    },
+    {
+      "id": 145,
+      "raramuri": "batáli",
+      "spanish": "tesguino",
+      "image": "images/tesguino.jpg",
+      "category": "Comida y bebida",
+      "audio": "audio/patáli.mp3"
+    },
+    {
+      "id": 146,
+      "raramuri": "kolí",
+      "spanish": "chile",
+      "image": "images/chile.jpg",
+      "category": "Comida y bebida",
+      "audio": "audio/kolí.mp3"
+    },
+    {
+      "id": 147,
+      "raramuri": "kawá",
+      "spanish": "huevo",
+      "image": "images/huevo.jpg",
+      "category": "Comida y bebida",
+      "audio": "audio/kawá.mp3"
+    },
+    {
+      "id": 148,
+      "raramuri": "kuchiála",
+      "spanish": "cama",
+      "image": "images/cama.jpg",
+      "category": "Objetos",
+      "audio": "audio/kuchiála.wav"
+    },
+    {
+      "id": 149,
+      "raramuri": "gosibéla",
+      "spanish": "silla",
+      "image": "images/silla.jpg",
+      "category": "Objetos",
+      "audio": "audio/gosibléla.wav"
+    },
+    {
+      "id": 150,
+      "raramuri": "era",
+      "spanish": "puerta",
+      "image": "images/puerta.jpg",
+      "category": "Objetos",
+      "audio": "audio/era.wav"
+    },
+    {
+      "spanish": "bebé",
+      "raramuri": "muchí",
+      "category": "Personas",
+      "image": "images/bebe.jpg",
+      "audio": "audio/muchí.wav",
+      "id": 151
+    },
+    {
+      "spanish": "niña",
+      "raramuri": "tewé",
+      "category": "Personas",
+      "image": "images/nina.jpg",
+      "audio": "audio/tewé.wav",
+      "id": 152
+    },
+    {
+      "spanish": "viejita",
+      "raramuri": "usí",
+      "category": "Personas",
+      "image": "images/viejita.jpg",
+      "id": 153
+    },
+    {
+      "spanish": "vecino",
+      "raramuri": "gemá bitému",
+      "category": "Personas",
+      "image": "images/vecino.jpg",
+      "id": 154
+    },
+    {
+      "spanish": "pelota",
+      "raramuri": "re'éla",
+      "category": "Objetos",
+      "image": "images/pelota.jpg",
+      "audio": "audio/re_éla.wav",
+      "id": 155
+    },
+    {
+      "spanish": "aretes",
+      "raramuri": "welá",
+      "category": "Vestimenta",
+      "image": "images/aretes.jpg",
+      "audio": "audio/welá.wav",
+      "id": 156
+    },
+    {
+      "spanish": "hoja",
+      "raramuri": "sawála",
+      "category": "Naturaleza",
+      "image": "images/hoja.jpg",
+      "id": 157
+    },
+    {
+      "spanish": "rama",
+      "raramuri": "rahamé",
+      "category": "Naturaleza",
+      "image": "images/rama.jpg",
+      "id": 158
+    },
+    {
+      "spanish": "raíz",
+      "raramuri": "nawíli",
+      "category": "Naturaleza",
+      "image": "images/raiz.jpg",
+      "id": 159
+    },
+    {
+      "spanish": "trueno",
+      "raramuri": "rarané",
+      "category": "Naturaleza",
+      "image": "images/trueno.jpg",
+      "id": 160
+    },
+    {
+      "spanish": "arcoiris",
+      "raramuri": "arcolí",
+      "category": "Naturaleza",
+      "image": "images/arcoiris.jpg",
+      "id": 161
+    },
+    {
+      "id": 162,
+      "spanish": "águila",
+      "raramuri": "",
+      "category": "Animales",
+      "image": "images/aguila.jpg"
+    },
+    {
+      "id": 163,
+      "spanish": "ardilla",
+      "raramuri": "",
+      "category": "Animales",
+      "image": "images/ardilla.jpg"
+    },
+    {
+      "id": 164,
+      "spanish": "tortuga",
+      "raramuri": "",
+      "category": "Animales",
+      "image": "images/tortuga.jpg"
+    },
+    {
+      "id": 165,
+      "spanish": "pato",
+      "raramuri": "",
+      "category": "Animales",
+      "image": "images/pato.jpg"
+    },
+    {
+      "id": 166,
+      "spanish": "alacrán",
+      "raramuri": "",
+      "category": "Animales",
+      "image": "images/alacran.jpg"
+    },
+    {
+      "id": 167,
+      "spanish": "sahuaro",
+      "raramuri": "",
+      "category": "Naturaleza",
+      "image": "images/sahuaro.jpg"
+    },
+    {
+      "id": 168,
+      "spanish": "pitahaya",
+      "raramuri": "",
+      "category": "Comida y bebida",
+      "image": "images/pitahaya.jpg"
+    },
+    {
+      "id": 169,
+      "spanish": "tamal",
+      "raramuri": "",
+      "category": "Comida y bebida",
+      "image": "images/tamal.jpg"
+    },
+    {
+      "id": 170,
+      "spanish": "caldo",
+      "raramuri": "",
+      "category": "Comida y bebida",
+      "image": "images/caldo.jpg"
+    },
+    {
+      "id": 171,
+      "spanish": "metate",
+      "raramuri": "",
+      "category": "Objetos y hogar",
+      "image": "images/metate.jpg"
+    },
+    {
+      "id": 172,
+      "spanish": "bule",
+      "raramuri": "",
+      "category": "Objetos y hogar",
+      "image": "images/bule.jpg"
+    },
+    {
+      "id": 173,
+      "spanish": "petate",
+      "raramuri": "",
+      "category": "Objetos y hogar",
+      "image": "images/petate.jpg"
+    },
+    {
+      "id": 174,
+      "spanish": "cabeza",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/cabeza.jpg"
+    },
+    {
+      "id": 175,
+      "spanish": "dientes",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/dientes.jpg"
+    },
+    {
+      "id": 176,
+      "spanish": "brazo",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/brazo.jpg"
+    },
+    {
+      "id": 177,
+      "spanish": "pierna",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/pierna.jpg"
+    },
+    {
+      "id": 178,
+      "spanish": "codo",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/codo.jpg"
+    },
+    {
+      "id": 179,
+      "spanish": "mejillas",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/mejillas.jpg"
+    },
+    {
+      "id": 180,
+      "spanish": "panza",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/panza.jpg"
+    },
+    {
+      "id": 181,
+      "spanish": "ombligo",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/ombligo.jpg"
+    },
+    {
+      "id": 182,
+      "spanish": "dedos",
+      "raramuri": "",
+      "category": "Partes del cuerpo",
+      "image": "images/dedos.jpg"
+    }
+  ],
+  "phrases": [
+    {
+      "id": 1001,
+      "raramuri": "kuira ba!",
+      "spanish": "¡hola! / ¡buenos días!"
+    },
+    {
+      "id": 1002,
+      "raramuri": "matetera ba.",
+      "spanish": "gracias."
+    },
+    {
+      "id": 1003,
+      "raramuri": "¿chú mu rewé?",
+      "spanish": "¿cómo te llamas?"
+    },
+    {
+      "id": 1004,
+      "raramuri": "nijé rewalá ko jú...",
+      "spanish": "mi nombre es..."
+    },
+    {
+      "id": 1005,
+      "raramuri": "ganíraba",
+      "spanish": "con mucho gusto"
+    },
+    {
+      "id": 1006,
+      "raramuri": "ariósaba",
+      "spanish": "adiós"
+    },
+    {
+      "id": 1007,
+      "raramuri": "rarámuri ra0ichaga beninare ne",
+      "spanish": "quiero aprender rarámuri."
+    },
+    {
+      "id": 1008,
+      "raramuri": "tabiré námane",
+      "spanish": "no entiendo"
+    },
+    {
+      "id": 1009,
+      "raramuri": "¿cha anaríame ju ye tábiri?",
+      "spanish": "¿que nombre tiene esta cosa?"
+    }
+  ]
+};

@@ -1,0 +1,26 @@
+# Temporary screenshots and test runners
+snap_*.png
+test_*.png
+test_*.html
+mockup*.html
+mockup*.png
+screenshot_*.png
+temp_*.png
+adivina_*.png
+crop*.png
+memorama_*.png
+popover_*.png
+header_*.png
+rendered_*.png
+render_*.html
+batch_convert_all_nobg.py
+test_bg.py
+
+# Temporary and system files
+__pycache__/
+*.pyc
+.edge-temp/
+*.log
+.DS_Store
+Thumbs.db
+subir_a_github.bat

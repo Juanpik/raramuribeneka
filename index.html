@@ -1,260 +1,527 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rarámuri Be'neka! — Aprende rarámuri</title>
-<meta name="description" content="Aplicación para el aprendizaje básico de la lengua rarámuri (tarahumara): léxico, frases, memorama, quiz y flashcards.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rarámuri Be'neka!</title>
+    <meta name="description" content="Aplicación interactiva para el aprendizaje de la lengua rarámuri (tarahumara): palabras, frases, memorama, quiz, flashcards y ahorcado.">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Tipografías: Instrument Serif (Editorial / Títulos), Space Mono (Rarámuri) y Plus Jakarta Sans (UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=2">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+    <link rel="icon" type="image/png" href="images/favicon.png?v=2">
+    <link rel="shortcut icon" href="favicon.ico?v=2">
+    <link rel="stylesheet" href="style.css">
+    <script src="data.js" defer></script>
+    <script src="contours.js?v=2" defer></script>
+    <script src="script.js?v=3" defer></script>
 </head>
 <body>
-
-<a class="skip-link" href="#main-content">Saltar al contenido</a>
-
-<header class="site-header">
-    <div class="header-band" aria-hidden="true"></div>
-    <div class="header-inner">
-        <h1>Rarámuri Be'neka!</h1>
-    </div>
-    <nav class="main-nav" aria-label="Secciones de la aplicación">
-        <div class="nav-scroll">
-            <button data-section="about" class="nav-btn">
-                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 19L9 7L13 14L15.5 10L21 19H3Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>El&nbsp;proyecto</span>
-            </button>
-            <button data-section="lexicon" class="nav-btn">
-                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 6C10.5 4.8 8 4.2 4 4.5V17.5C8 17.2 10.5 17.8 12 19C13.5 17.8 16 17.2 20 17.5V4.5C16 4.2 13.5 4.8 12 6Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6V19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-                <span>Léxico</span>
-            </button>
-            <button data-section="phrases" class="nav-btn">
-                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5H20V16H9L5 19.5V16H4V5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 9.5H16M8 12.5H13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-                <span>Frases</span>
-            </button>
-            <button data-section="memorama" class="nav-btn">
-                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="7" y="3" width="11" height="15" rx="1.5" transform="rotate(8 12.5 10.5)" stroke="currentColor" stroke-width="1.7"/><rect x="4" y="6" width="11" height="15" rx="1.5" fill="white" stroke="currentColor" stroke-width="1.8"/></svg>
-                <span>Memorama</span>
-            </button>
-            <button data-section="quiz" class="nav-btn">
-                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M8 12.5L10.8 15.3L16 9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>Quiz</span>
-            </button>
-            <button data-section="flashcards" class="nav-btn">
-                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5.5" y="7.5" width="13" height="13" rx="1.6" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 4C13 2.3 17.3 3.8 19 7.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M19.5 4.2L19.3 7.4L16.2 6.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>Flashcards</span>
-            </button>
-            <button data-section="guess" class="nav-btn">
-                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 17L7.5 7L11 17M5 14H10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 13.5C13.5 12 14.7 11 16.2 11C17.7 11 19 12 19 14V17M19 13.5C18.3 12.7 17.2 12.3 16.2 12.8C14.8 13.5 14.8 15.5 16.2 16.2C17.2 16.7 18.3 16.3 19 15.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>Ahorcado</span>
-            </button>
+    <!-- Pantalla de Carga -->
+    <div id="loading-screen" class="hidden" aria-live="assertive" aria-busy="true">
+        <div class="spinner-container">
+            <div class="spinner"></div>
+            <p class="loading-label">Kuira ba... Cargando Rarámuri Be'neka</p>
         </div>
-    </nav>
-    <div class="header-band header-band--bottom" aria-hidden="true"></div>
-</header>
-
-<main id="main-content">
-    <div id="loading-message" class="state-message">
-        <div class="spinner" aria-hidden="true"></div>
-        <p>Cargando datos…</p>
     </div>
-    <div id="error-message" class="state-message state-message--error" role="alert"></div>
 
-    <div id="main-content-inner" class="content-wrap" hidden>
+    <!-- Barra de Notificación / Error Global -->
+    <div id="error-message" class="hidden" role="alert" aria-live="assertive">
+        <span class="error-text"></span>
+        <button class="close-error-btn" aria-label="Cerrar">&times;</button>
+    </div>
 
-        <!-- ABOUT -->
-        <section id="about" class="content-section">
-            <h2>Sobre el proyecto</h2>
-            <p>Esta aplicación fue creada para apoyar el aprendizaje básico de la lengua rarámuri de una forma sencilla y accesible. Esta lengua, también conocida como tarahumara, pertenece a la familia lingüística yuto-azteca y es hablada por alrededor de 85,000 personas en el estado de Chihuahua, México.</p>
-            <div class="callout">
-                <p>Como muchas otras lenguas, el rarámuri no se habla igual en todas las comunidades. Existen diferentes variantes dialectales —como la central, occidental, norteña, sureste y suroeste— que presentan diferencias en la pronunciación, la escritura y algunas palabras. Por ello, es posible que encuentres términos o expresiones distintos de los que se usan en otras regiones.</p>
+    <!-- Encabezado Principal con cenefa inferior -->
+    <header class="site-header">
+        <div class="header-content">
+            <div class="brand">
+                <a href="#lexicon" class="brand-link" data-nav="lexicon" aria-label="Rarámuri Be'neka">
+                    <img src="images/brand-logo.png" alt="Rarámuri Be'neka!" class="brand-full-logo">
+                    <h1 class="sr-only">Rarámuri Be'neka!</h1>
+                </a>
             </div>
-            <p>Esperamos que esta aplicación sea una puerta de entrada para conocer y aprender la lengua rarámuri. Aunque no sustituye el conocimiento de las y los hablantes ni la riqueza de cada variante, busca contribuir a su valoración, difusión y fortalecimiento.</p>
-            <p class="credits-line">Créditos:</p>
-            <p class="credits-line">Este proyecto es el resultado del trabajo conjunto entre docentes y estudiantes de la Escuela de Antropología e Historia del Norte de México (EAHNM), integrantes del Seminario de Lengua y Educación (SEMLE-Chihuahua) del Colegio de México, y del personal docente de la Escuela Primaria Indígena Cali Rosácame. Los audios y los contenidos lingüísticos fueron elaborados con la valiosa participación de las niñas y los niños de esta escuela, quienes aportaron su voz y sus conocimientos para dar vida a esta herramienta.</p>
-        </section>
 
-        <!-- LEXICON -->
-        <section id="lexicon" class="content-section">
-            <h2>Léxico</h2>
-            <div id="category-filters" class="category-filter-container"></div>
-            <div class="search-container">
-                <div class="search-input-wrap">
-                    <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><line x1="21" y1="21" x2="16.5" y2="16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                    <input type="search" id="lexicon-search" placeholder="Buscar palabra (rarámuri o español)…" aria-label="Buscar en el léxico">
-                </div>
-                <p class="lexicon-tip">⭐ Haz clic en las imágenes para añadir palabras a tu lista de repaso.</p>
-            </div>
-            <div id="lexicon-grid" class="lexicon-grid"></div>
-        </section>
+            <!-- Barra de Pestañas Principal -->
+            <nav class="main-nav" aria-label="Navegación principal">
+                <button class="nav-tab active" data-section="lexicon">
+                    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    <span>Palabras</span>
+                </button>
+                <button class="nav-tab" data-section="phrases">
+                    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    <span>Frases</span>
+                </button>
+                <button class="nav-tab" data-section="practice">
+                    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    <span>Práctica</span>
+                </button>
+                <button class="nav-tab" data-section="about">
+                    <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <span class="nav-text-full">El proyecto</span>
+                    <span class="nav-text-short">Info</span>
+                </button>
+            </nav>
+        </div>
+        <div class="header-greca-band" aria-hidden="true"></div>
+    </header>
 
-        <!-- PHRASES -->
-        <section id="phrases" class="content-section">
-            <h2>Frases comunes</h2>
-            <ul id="phrases-list" class="phrases-list"></ul>
-        </section>
+    <!-- Contenedor Principal -->
+    <main id="main-content" class="main-container">
 
-        <!-- MEMORAMA -->
-        <section id="memorama" class="content-section">
-            <h2>Memorama</h2>
-            <div id="memorama-setup" class="setup-panel">
-                <div class="setup-group">
-                    <label for="memorama-category">Categoría</label>
-                    <select id="memorama-category"></select>
-                </div>
-                <p class="setup-hint">Elige la dificultad (número de pares):</p>
-                <div class="difficulty-row">
-                    <button class="difficulty-btn" data-pairs="4">Fácil <span class="diff-count">4</span></button>
-                    <button class="difficulty-btn" data-pairs="6">Medio <span class="diff-count">6</span></button>
-                    <button class="difficulty-btn" data-pairs="8">Difícil <span class="diff-count">8</span></button>
-                </div>
-            </div>
-            <div id="memorama-game-area" class="memorama-game-area" hidden>
-                <div id="memorama-controls">
-                    <button id="reset-memorama" class="btn-secondary">↺ Reiniciar juego</button>
-                    <p class="attempts-display">Intentos: <span id="memorama-attempts">0</span></p>
-                </div>
-                <div id="memorama-grid"></div>
-                <div id="memorama-win-message" class="win-banner" hidden></div>
-            </div>
-            <p id="memorama-data-error" class="data-error" hidden></p>
-        </section>
-
-        <!-- QUIZ -->
-        <section id="quiz" class="content-section">
-            <h2>Quiz</h2>
-            <div id="quiz-container">
-                <div id="quiz-setup" class="setup-panel">
-                    <p class="setup-hint">¡Ponte a prueba!</p>
-                    <div class="setup-group">
-                        <label for="quiz-category">Categoría</label>
-                        <select id="quiz-category"></select>
+        <!-- ============================================== -->
+        <!-- SECCIÓN 1: LÉXICO (DICCIONARIO INTERACTIVO)    -->
+        <!-- ============================================== -->
+        <section id="section-lexicon" class="content-section active">
+            <!-- Barra de Búsqueda y Filtros Editoriales (Selector A) -->
+            <div class="lexicon-editorial-header">
+                <div class="search-and-repasar-row">
+                    <div class="search-field-wrap">
+                        <svg class="search-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input type="search" id="lexicon-search" placeholder="Búsali... / Busca una palabra en rarámuri o español" autocomplete="off">
+                        <button id="clear-search-btn" class="clear-search-btn hidden" aria-label="Limpiar búsqueda">&times;</button>
                     </div>
-                    <div class="setup-group">
-                        <label for="quiz-length">Número de preguntas</label>
-                        <select id="quiz-length">
-                            <option value="5">5 preguntas</option>
-                            <option value="10">10 preguntas</option>
-                            <option value="all">Todas</option>
-                        </select>
-                    </div>
-                    <button id="start-quiz" class="btn-primary">Empezar quiz</button>
-                    <p id="quiz-data-error" class="data-error" hidden></p>
-                </div>
 
-                <div id="quiz-question-area" class="quiz-question-area" hidden>
-                    <div class="quiz-progress"><div id="quiz-progress-bar" class="quiz-progress-bar"></div></div>
-                    <div id="quiz-image-container" class="quiz-image-container"></div>
-                    <h3 id="quiz-question"></h3>
-                    <div id="quiz-options" class="quiz-options"></div>
-                    <div id="quiz-text-input-area" class="quiz-text-input-area" hidden>
-                        <input type="text" id="quiz-text-answer" placeholder="Escribe la palabra en rarámuri…" autocomplete="off" lang="rar">
-                        <button id="submit-text-answer" class="btn-primary">Comprobar</button>
-                    </div>
-                    <p id="quiz-feedback" class="quiz-feedback" aria-live="polite"></p>
-                    <button id="next-question" class="btn-primary" hidden>Siguiente →</button>
-                </div>
+                    <!-- Selector A de Categorías Desplegable con Sellos Ilustrados -->
+                    <div class="category-dropdown-container" id="category-dropdown-wrap">
+                        <button id="category-dropdown-trigger" class="category-dropdown-trigger" type="button" aria-haspopup="true" aria-expanded="false" title="Filtrar por categoría">
+                            <span class="cat-icon-slot" id="cat-trigger-icon"></span>
+                            <span class="cat-label-text">Categoría: <strong id="cat-trigger-name">Todas</strong></span>
+                            <svg class="chevron-glyph" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
 
-                <div id="quiz-results" class="quiz-results" hidden>
-                    <h3>Resultados</h3>
-                    <p class="quiz-score-display">Obtuviste <span id="quiz-score">0</span> de <span id="quiz-total">0</span> respuestas correctas.</p>
-                    <div class="quiz-results-actions">
-                        <button id="restart-quiz" class="btn-secondary">Volver a empezar</button>
-                        <button id="retry-missed-quiz" class="btn-primary" hidden>Reintentar falladas</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FLASHCARDS -->
-        <section id="flashcards" class="content-section">
-            <h2>Flashcards</h2>
-            <div id="flashcards-container">
-                <div id="flashcards-setup-controls" class="setup-panel setup-panel--inline">
-                    <div class="setup-group">
-                        <label for="flashcard-category">Categoría</label>
-                        <select id="flashcard-category"></select>
-                    </div>
-                    <p id="flashcards-data-error" class="data-error" hidden></p>
-                </div>
-
-                <p id="flashcards-loading" class="state-message-inline" hidden>Cargando tarjetas…</p>
-                <p id="flashcards-error" class="data-error" hidden></p>
-
-                <div id="flashcard-area" class="flashcard-area" hidden>
-                    <div id="flashcard-counter" class="flashcard-counter"></div>
-                    <div id="flashcard-display-area">
-                        <div class="flashcard" id="flashcard">
-                            <div class="flashcard-face card-front" id="flashcard-front"></div>
-                            <div class="flashcard-face card-back" id="flashcard-back"></div>
+                        <div id="category-popover-menu" class="category-popover-menu hidden" role="menu">
+                            <div class="popover-header-row">
+                                <span class="popover-head-text">Seleccionar Categoría</span>
+                                <span class="popover-count-tag" id="popover-cats-count">11 categorías</span>
+                            </div>
+                            <div class="popover-grid-layout" id="category-popover-grid">
+                                <!-- Botones inyectados por JS con sellos ilustrados -->
+                            </div>
                         </div>
                     </div>
-                    <p class="flip-hint">Toca la tarjeta para voltearla</p>
-                    <div id="flashcard-controls">
-                        <button id="prev-flashcard-btn" class="btn-icon" aria-label="Tarjeta anterior">‹</button>
-                        <button id="flip-flashcard-btn" class="btn-secondary">Voltear</button>
-                        <button id="next-flashcard-btn" class="btn-icon" aria-label="Tarjeta siguiente">›</button>
-                        <button id="shuffle-flashcards-btn" class="btn-secondary">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-2px;margin-right:5px;"><path fill-rule="evenodd" d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3h1.5a.5.5 0 0 1 0 1H13c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12h1.5a.5.5 0 0 1 0 1H13c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1 0-1z"/><path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9V6.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z"/></svg>Barajar
-                        </button>
+
+                    <!-- Contador de Repaso con Parche Textil Bordado -->
+                    <div class="repasar-pill-counter" id="repasar-badge" role="button" tabindex="0" title="Ver palabras bordadas para repasar">
+                        <span class="stitch-badge-icon">
+                            <svg viewBox="0 0 20 20" width="18" height="18" fill="none">
+                                <rect x="2" y="2" width="16" height="16" rx="4" stroke="#C20E22" stroke-width="1.8" stroke-dasharray="3.5 2.5" fill="#FAF7F5"/>
+                                <line x1="7" y1="7" x2="13" y2="13" stroke="#C20E22" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="13" y1="7" x2="7" y2="13" stroke="#C20E22" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <span id="repasar-count-text">0 por repasar</span>
+                    </div>
+                </div>
+
+                <!-- Anotación manuscrita discreta tipo bitácora -->
+                <div id="repasar-editorial-hint" class="repasar-editorial-hint">
+                    <span class="hint-stitch-needle">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 2 11 13"/><circle cx="17.5" cy="6.5" r="1.5"/><path d="m11 13-6 6a2.828 2.828 0 1 1-4-4l6-6"/></svg>
+                    </span>
+                    <span class="hint-message">Toca la ilustración para agregarla a la lista de repaso</span>
+                    <button id="dismiss-hint-btn" class="hint-dismiss-btn" aria-label="Entendido">&times;</button>
+                </div>
+            </div>
+
+            <div id="lexicon-grid" class="vocab-cards-grid">
+                <!-- Tarjetas inyectadas por JS -->
+            </div>
+
+            <div id="lexicon-empty" class="empty-results-box hidden">
+                <p>No se encontraron palabras que coincidan con tu búsqueda.</p>
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- SECCIÓN 2: FRASES COTIDIANAS                   -->
+        <!-- ============================================== -->
+        <section id="section-phrases" class="content-section">
+            <div id="phrases-list" class="phrases-container">
+                <!-- Frases inyectadas por JS -->
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- SECCIÓN 3: PRÁCTICA Y JUEGOS                    -->
+        <!-- ============================================== -->
+        <section id="section-practice" class="content-section">
+            <!-- Lobby / Selector de Actividades de Práctica -->
+            <div id="practice-lobby" class="practice-lobby-section">
+                <div class="practice-lobby-header">
+                    <h2 class="practice-lobby-title">
+                        <img src="images/practice_icons/spark_left.png" alt="" class="title-spark spark-left" aria-hidden="true">
+                        Actividades de práctica
+                        <img src="images/practice_icons/spark_right.png" alt="" class="title-spark spark-right" aria-hidden="true">
+                    </h2>
+                    <p class="practice-lobby-subtitle">Elige una actividad para poner a prueba y reforzar tu vocabulario rarámuri.</p>
+                </div>
+
+                <div class="practice-cards-grid">
+                    <!-- Tarjeta 1: Adivina la palabra -->
+                    <button type="button" class="practice-activity-card card-guess" data-game="guess">
+                        <div class="activity-card-icon-wrap">
+                            <img src="images/practice_icons/act_adivina_vasija.png?v=4" alt="Adivina la palabra" class="activity-card-icon">
+                        </div>
+                        <div class="activity-card-body">
+                            <h3 class="activity-card-title">Adivina<br>la palabra</h3>
+                            <p class="activity-card-desc">Descubre la palabra letra por letra. ¡Cuida la vasija!</p>
+                        </div>
+                        <div class="activity-card-action-btn" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                        <div class="activity-card-greca" aria-hidden="true"></div>
+                    </button>
+
+                    <!-- Tarjeta 2: Quiz -->
+                    <button type="button" class="practice-activity-card card-quiz" data-game="quiz">
+                        <div class="activity-card-icon-wrap">
+                            <img src="images/practice_icons/act_quiz_checklist.png?v=4" alt="Quiz" class="activity-card-icon">
+                        </div>
+                        <div class="activity-card-body">
+                            <h3 class="activity-card-title">Quiz</h3>
+                            <p class="activity-card-desc">Elige la respuesta correcta y comprueba lo que sabes.</p>
+                        </div>
+                        <div class="activity-card-action-btn" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                        <div class="activity-card-greca" aria-hidden="true"></div>
+                    </button>
+
+                    <!-- Tarjeta 3: Memorama -->
+                    <button type="button" class="practice-activity-card card-memorama" data-game="memorama">
+                        <div class="activity-card-icon-wrap">
+                            <img src="images/practice_icons/act_memorama_venados.png?v=4" alt="Memorama" class="activity-card-icon">
+                        </div>
+                        <div class="activity-card-body">
+                            <h3 class="activity-card-title">Memorama</h3>
+                            <p class="activity-card-desc">Encuentra los pares de palabras e imágenes.</p>
+                        </div>
+                        <div class="activity-card-action-btn" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                        <div class="activity-card-greca" aria-hidden="true"></div>
+                    </button>
+
+                    <!-- Tarjeta 4: Flashcards -->
+                    <button type="button" class="practice-activity-card card-flashcards" data-game="flashcards">
+                        <div class="activity-card-icon-wrap">
+                            <img src="images/practice_icons/act_flashcards_kowi.png?v=5" alt="Flashcards" class="activity-card-icon">
+                        </div>
+                        <div class="activity-card-body">
+                            <h3 class="activity-card-title">Flashcards</h3>
+                            <p class="activity-card-desc">Repasa con tarjetas interactivas y escucha la pronunciación.</p>
+                        </div>
+                        <div class="activity-card-action-btn" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                        <div class="activity-card-greca" aria-hidden="true"></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- MODO 1: Adivina la palabra (5 vidas y Game Over) -->
+            <!-- MODO 1: Adivina la Palabra -->
+            <div id="game-guess" class="game-view-panel hidden">
+                <div class="activity-top-bar guess-top-bar">
+                    <button type="button" class="back-to-lobby-btn duo-btn secondary small" aria-label="Volver a actividades">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        <span class="back-label-full">Volver a las actividades</span>
+                        <span class="back-label-short">Actividades</span>
+                    </button>
+                    <div class="guess-score-pill">
+                        Aciertos: <strong id="guess-score">0</strong>
+                    </div>
+                </div>
+
+                <div id="guess-setup" class="card-dialog">
+                    <h3 class="dialog-title">Adivina la Palabra</h3>
+                    <p class="dialog-subtitle">Descubre la palabra rarámuri letra por letra. Cada error agrietará tu vasija de barro (<strong>sekorí</strong>) hasta romperla.</p>
+                    <div class="input-selection-group">
+                        <label for="guess-category">Categoría de práctica:</label>
+                        <select id="guess-category" class="styled-dropdown"></select>
+                    </div>
+                    <button id="guess-start-btn" class="duo-btn primary large">¡Comenzar a Jugar!</button>
+                </div>
+
+                <div id="guess-game-area" class="card-dialog guess-main-card hidden">
+                    <!-- 1. VASIJA HERO (Elemento central del juego, grande, indicador visual de errores) -->
+                    <div class="guess-vasija-hero">
+                        <div class="vasija-hero-frame" id="guess-vasija-stage" title="Vasija tradicional de barro (sekorí)">
+                            <img id="guess-vasija-img" src="images/vasija/vasija_0.png" alt="Vasija Sekorí" class="vasija-hero-img">
+                        </div>
+                        <div class="vasija-status-wrap">
+                            <span id="vasija-status-label" class="vasija-status-pill">Intacta</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. ILUSTRACIÓN DE LA PALABRA (Presencia similar a imágenes de Léxico) -->
+                    <div class="guess-word-hero">
+                        <div id="guess-image-container" class="guess-image-frame"></div>
+                        <!-- 3. PISTA EN ESPAÑOL (Palabra en español) -->
+                        <div class="guess-hint-row">
+                            <span class="guess-hint-word" id="guess-hint"></span>
+                        </div>
+                    </div>
+
+                    <!-- 4. PALABRA INCOMPLETA (Casillas uniformes y claras) -->
+                    <div id="guess-word-slots" class="guess-slots-grid"></div>
+
+                    <!-- Feedback de Acierto y Acción de Siguiente Palabra -->
+                    <div id="guess-feedback" class="guess-feedback-box hidden"></div>
+                    <div class="guess-next-action-row">
+                        <button id="guess-next-btn" class="duo-btn primary hidden">Siguiente Palabra &rarr;</button>
+                    </div>
+
+                    <!-- 5. TECLADO VIRTUAL -->
+                    <div id="guess-keyboard" class="guess-virtual-keyboard"></div>
+                </div>
+
+                <!-- Pantalla de FINAL DE PARTIDA (Vasija rota) -->
+                <div id="guess-game-over" class="card-dialog game-over-modal hidden">
+                    <div class="game-over-vasija-wrap">
+                        <img src="images/vasija/vasija_5.png" alt="Vasija Sekorí rota" class="game-over-vasija-img">
+                    </div>
+                    <h3 class="modal-heading-alert">La vasija se rompió</h3>
+                    <p class="modal-body-text">Se agotaron los 5 intentos. La palabra correcta era: <strong id="guess-reveal-word" class="revealed-word"></strong></p>
+                    <p class="modal-subtext">Aciertos logrados: <strong id="guess-final-score">0</strong></p>
+                    <button id="guess-retry-btn" class="duo-btn primary large">Intentar otra palabra</button>
+                </div>
+            </div>
+
+            <!-- MODO 2: Quiz -->
+            <div id="game-quiz" class="game-view-panel hidden">
+                <div class="activity-top-bar">
+                    <button type="button" class="back-to-lobby-btn duo-btn secondary small" aria-label="Volver a actividades">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        <span>Volver a las actividades</span>
+                    </button>
+                </div>
+
+                <div id="quiz-setup" class="card-dialog">
+                    <h3 class="dialog-title">Quiz de Vocabulario</h3>
+                    <p class="dialog-subtitle">Evalúa tu retención con preguntas de opción múltiple y escritura.</p>
+                    <div class="input-selection-group">
+                        <label for="quiz-category">Categoría:</label>
+                        <select id="quiz-category" class="styled-dropdown"></select>
+                    </div>
+                    <div class="input-selection-group">
+                        <label>Preguntas por ronda:</label>
+                        <div class="pill-buttons-row" id="quiz-length-options">
+                            <button type="button" class="pill-toggle active" data-length="5">5</button>
+                            <button type="button" class="pill-toggle" data-length="10">10</button>
+                            <button type="button" class="pill-toggle" data-length="all">Todas</button>
+                        </div>
+                    </div>
+                    <button id="quiz-start-btn" class="duo-btn primary large">Comenzar Quiz</button>
+                </div>
+
+                <div id="quiz-question-area" class="card-dialog hidden">
+                    <div class="duo-progress-wrapper">
+                        <div id="quiz-progress-bar" class="duo-progress-bar"></div>
+                    </div>
+                    <div class="quiz-step-info">
+                        Pregunta <span id="quiz-current-q">1</span> de <span id="quiz-total-q">5</span>
+                    </div>
+
+                    <div class="question-stimulus">
+                        <div id="quiz-image-container" class="quiz-image-frame"></div>
+                        <h4 id="quiz-question-text" class="question-statement"></h4>
+                    </div>
+
+                    <div id="quiz-options" class="options-choice-grid"></div>
+
+                    <div id="quiz-text-input-area" class="text-answer-row hidden">
+                        <input type="text" id="quiz-text-input" placeholder="Escribe tu respuesta en rarámuri..." autocomplete="off">
+                        <button id="quiz-submit-text" class="duo-btn primary">Comprobar</button>
+                    </div>
+
+                    <div id="quiz-feedback" class="feedback-answer-bar hidden"></div>
+
+                    <div class="quiz-actions-row">
+                        <button id="quiz-next-btn" class="duo-btn primary hidden">Continuar &rarr;</button>
+                    </div>
+                </div>
+
+                <!-- Resultados del Quiz -->
+                <div id="quiz-results" class="card-dialog results-summary-modal hidden">
+                    <h3 class="modal-heading-alert">¡Quiz Finalizado!</h3>
+                    <p class="modal-body-text">Tu puntaje: <span id="quiz-score">0</span> de <span id="quiz-score-total">0</span> (<strong id="quiz-percentage">0%</strong>)</p>
+                    <div class="modal-actions-duo">
+                        <button id="quiz-retry-missed-btn" class="duo-btn secondary hidden">Repasar solo falladas</button>
+                        <button id="quiz-restart-btn" class="duo-btn primary">Nuevo Quiz</button>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- AHORCADO -->
-        <section id="guess" class="content-section">
-            <h2>Ahorcado</h2>
-            <div id="guess-setup" class="setup-panel">
-                <p class="setup-hint">Mira la imagen y completa la palabra en rarámuri letra por letra.</p>
-                <div class="setup-group">
-                    <label for="guess-category">Categoría</label>
-                    <select id="guess-category"></select>
-                </div>
-                <button id="start-guess" class="btn-primary">Empezar a jugar</button>
-                <p id="guess-data-error" class="data-error" hidden></p>
-            </div>
-
-            <div id="guess-game-area" class="guess-game-area" hidden>
-                <div class="guess-top-row">
-                    <div id="guess-lives" class="guess-lives" aria-label="Intentos restantes"></div>
-                    <div class="guess-score">Aciertos: <span id="guess-score">0</span></div>
+            <!-- MODO 3: Memorama -->
+            <div id="game-memorama" class="game-view-panel hidden">
+                <div class="activity-top-bar">
+                    <button type="button" class="back-to-lobby-btn duo-btn secondary small" aria-label="Volver a actividades">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        <span>Volver a las actividades</span>
+                    </button>
                 </div>
 
-                <div id="guess-image-container" class="guess-image-container"></div>
+                <div id="memorama-setup" class="card-dialog">
+                    <h3 class="dialog-title">Memorama Rarámuri</h3>
+                    <p class="dialog-subtitle">Empareja cada imagen con su concepto escrito en rarámuri.</p>
+                    <div class="input-selection-group">
+                        <label for="memorama-category">Categoría:</label>
+                        <select id="memorama-category" class="styled-dropdown"></select>
+                    </div>
+                    <div class="input-selection-group">
+                        <label>Cantidad de pares:</label>
+                        <div class="pill-buttons-row" id="memorama-diff-options">
+                            <button type="button" class="pill-toggle active" data-pairs="4">4 pares</button>
+                            <button type="button" class="pill-toggle" data-pairs="6">6 pares</button>
+                            <button type="button" class="pill-toggle" data-pairs="8">8 pares</button>
+                        </div>
+                    </div>
+                    <button id="memorama-start-btn" class="duo-btn primary large">Iniciar Memorama</button>
+                </div>
 
-                <p class="guess-translation">«<span id="guess-spanish-word"></span>»</p>
+                <div id="memorama-game-area" class="card-dialog hidden">
+                    <div class="hud-bar">
+                        <div class="attempts-count-box">Intentos realizados: <strong id="memorama-attempts">0</strong></div>
+                        <button id="memorama-reset-btn" class="duo-btn secondary small">Reiniciar</button>
+                    </div>
 
-                <div id="guess-word-slots" class="guess-word-slots" lang="rar"></div>
+                    <div id="memorama-grid" class="memorama-cards-stage"></div>
 
-                <div id="guess-keyboard" class="guess-keyboard"></div>
-
-                <p id="guess-feedback" class="quiz-feedback" aria-live="polite"></p>
-                <button id="guess-next-btn" class="btn-primary" hidden>Siguiente palabra →</button>
+                    <div id="memorama-win-banner" class="card-dialog game-win-modal hidden">
+                        <h3 class="modal-heading-alert">¡Excelente memoria!</h3>
+                        <p class="modal-body-text">Completaste el tablero en <strong id="memorama-win-attempts">0</strong> intentos.</p>
+                        <button id="memorama-play-again" class="duo-btn primary large">Jugar otra ronda</button>
+                    </div>
+                </div>
             </div>
 
-            <div id="guess-round-end" class="guess-round-end" hidden>
-                <h3 id="guess-round-title"></h3>
-                <p id="guess-round-message"></p>
-                <button id="guess-play-again" class="btn-secondary">Jugar de nuevo</button>
+            <!-- MODO 4: Flashcards -->
+            <div id="game-flashcards" class="game-view-panel hidden">
+                <div class="activity-top-bar">
+                    <button type="button" class="back-to-lobby-btn duo-btn secondary small" aria-label="Volver a actividades">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        <span>Volver a las actividades</span>
+                    </button>
+                </div>
+
+                <div class="flashcards-top-bar">
+                    <div class="category-selector-inline">
+                        <label for="flashcard-category-select">Categoría:</label>
+                        <select id="flashcard-category-select" class="styled-dropdown"></select>
+                    </div>
+                    <button id="flashcard-shuffle" class="duo-btn secondary small" title="Barajar tarjetas">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+                        <span>Mezclar</span>
+                    </button>
+                </div>
+
+                <!-- Barra de progreso fina y contador dependiente de categoría -->
+                <div class="flashcard-meta-bar">
+                    <div class="flashcard-counter-wrap">
+                        <span id="flashcard-counter" class="flashcard-counter-label">1 de 20</span>
+                    </div>
+                    <div class="flashcard-progress-track">
+                        <div id="flashcard-progress-fill" class="flashcard-progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="flashcard-viewport">
+                    <div id="flashcard" class="flashcard-3d-unit" role="button" tabindex="0" aria-label="Tarjeta de estudio, pulsa para voltear">
+                        <!-- Cara Frontal (Español) -->
+                        <div class="card-side front-side">
+                            <span class="fc-badge">ESPAÑOL</span>
+                            <div class="fc-illustration-wrap">
+                                <img id="fc-img" src="images/placeholder.png" alt="" loading="lazy">
+                            </div>
+                            <h3 id="fc-spanish" class="fc-word-es">huarache</h3>
+                        </div>
+                        <!-- Cara Posterior / Reverso (Rarámuri) -->
+                        <div class="card-side back-side">
+                            <span class="fc-badge">RARÁMURI</span>
+                            <div class="fc-illustration-wrap">
+                                <img id="fc-img-back" src="images/placeholder.png" alt="" loading="lazy">
+                            </div>
+                            <div class="fc-word-ra-row">
+                                <h3 id="fc-raramuri" class="fc-word-ra">aká</h3>
+                                <button id="fc-audio-btn" class="card-play-audio-btn fc-audio-inline-btn" type="button" aria-label="Escuchar pronunciación" title="Escuchar pronunciación">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard-nav-controls">
+                    <button id="flashcard-prev" class="duo-btn secondary">&larr; Anterior</button>
+                    <button id="flashcard-flip" class="duo-btn primary">Voltear</button>
+                    <button id="flashcard-next" class="duo-btn secondary">Siguiente &rarr;</button>
+                </div>
             </div>
         </section>
 
-    </div>
-</main>
+        <!-- ============================================== -->
+        <!-- SECCIÓN 4: EL PROYECTO (HISTORIA Y CRÉDITOS)    -->
+        <!-- ============================================== -->
+        <section id="section-about" class="content-section">
+            <div class="section-header-row section-header-centered">
+                <h2 class="section-title">Sobre el proyecto</h2>
+            </div>
 
-<footer class="site-footer">
-    <div class="footer-band" aria-hidden="true"></div>
-    <div class="footer-logos">
-        <img src="images/logo.png" alt="Logotipo EAHNM" class="footer-logo">
-        <img src="images/logo-cali-rosacame.png" alt="Escuela Primaria Indígena Cali Rosacame" class="footer-logo">
-        <img src="images/logo-semle.svg" alt="SEMLE — 10/12° aniversario" class="footer-logo">
-    </div>
-</footer>
+            <div class="about-narrative-card">
+                <p class="intro-paragraph">Esta aplicación fue creada para apoyar el aprendizaje básico de la lengua rarámuri de una forma sencilla y accesible. Esta lengua, también conocida como tarahumara, pertenece a la familia lingüística yuto-azteca y es hablada por alrededor de 85,000 personas en el estado de Chihuahua, México.</p>
 
-<script src="script.js"></script>
+                <div class="callout-dialect-box">
+                    <div class="callout-symbol">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    </div>
+                    <div class="callout-text">
+                        <h4>El rarámuri no se habla igual en todas partes</h4>
+                        <p>Como muchas otras lenguas, el rarámuri no se habla igual en todas las comunidades. Existen diferentes variantes dialectales —como la central, occidental, norteña, sureste y suroeste— que presentan diferencias en la pronunciación, la escritura y algunas palabras. Por ello, es posible que encuentres términos o expresiones distintos de los que se usan en otras regiones.</p>
+                    </div>
+                </div>
+
+                <p class="closing-paragraph">Esperamos que esta aplicación sea una puerta de entrada para conocer y aprender la lengua rarámuri. Aunque no sustituye el conocimiento de las y los hablantes ni la riqueza de cada variante, busca contribuir a su valoración, difusión y fortalecimiento.</p>
+
+                <div class="institutions-block">
+                    <h3>Quiénes hacen posible este proyecto</h3>
+                    <p>Este proyecto es el resultado del trabajo conjunto entre docentes y estudiantes de la <strong>Escuela de Antropología e Historia del Norte de México (EAHNM)</strong>, integrantes del <strong>Seminario de Lengua y Educación (SEMLE-Chihuahua)</strong> del Colegio de México, y del personal docente de la <strong>Escuela Primaria Indígena Cali Rosácame</strong>.</p>
+                    <p>Los audios y los contenidos lingüísticos fueron elaborados con la valiosa participación de las niñas y los niños de esta escuela, quienes aportaron su voz y sus conocimientos para dar vida a esta herramienta.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de Página Centrado con Logos Flotantes -->
+    <footer class="site-footer">
+        <div class="footer-greca-band" aria-hidden="true"></div>
+        <div class="footer-wrapper">
+            <div class="logos-gallery">
+                <img src="images/logo.png" alt="Logo EAHNM" class="footer-logo-img" loading="lazy" title="Escuela de Antropología e Historia del Norte de México">
+                <img src="images/logo-cali-rosacame.png" alt="Logo Primaria Cali Rosácame" class="footer-logo-img" loading="lazy" title="Escuela Primaria Indígena Cali Rosácame">
+                <img src="images/logo-semle.svg" alt="Logo SEMLE" class="footer-logo-img" loading="lazy" title="Seminario de Lengua y Educación">
+            </div>
+        </div>
+        <div class="footer-greca-band" aria-hidden="true"></div>
+    </footer>
+    <!-- Canvas de Confeti Animado -->
+    <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
 </body>
 </html>
