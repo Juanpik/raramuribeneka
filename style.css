@@ -880,11 +880,6 @@ body::before {
   pointer-events: none;
 }
 
-.hint-stitch-needle {
-  font-style: normal;
-  font-size: 0.95rem;
-}
-
 .hint-dismiss-btn {
   background: none;
   border: none;
