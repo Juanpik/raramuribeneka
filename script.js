@@ -526,67 +526,173 @@
   }
 
   // ==========================================
-  // 6. NAVEGACIÓN Y PESTAÑAS (LOBBY DE PRÁCTICA Y VOLVER)
+  // 6. NAVEGACIÓN Y PESTAÑAS (TRANSICIONES FLUIDAS Y LOBBY)
   // ==========================================
+  let sectionTransitionTimer = null;
+  let practiceTransitionTimer = null;
+
+  function isReducedMotion() {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
   function showPracticeLobby() {
     AudioPlayer.stop();
     const lobby = document.getElementById('practice-lobby');
-    if (lobby) lobby.classList.remove('hidden');
-    const gamePanels = document.querySelectorAll('.game-view-panel');
-    gamePanels.forEach(panel => {
-      panel.classList.remove('active');
-      panel.classList.add('hidden');
-    });
+    const activeGame = document.querySelector('.game-view-panel.active:not(.hidden)');
+
+    if (practiceTransitionTimer) {
+      clearTimeout(practiceTransitionTimer);
+      practiceTransitionTimer = null;
+    }
+
+    if (isReducedMotion() || !activeGame || !lobby) {
+      if (lobby) {
+        lobby.classList.remove('hidden', 'lobby-exiting');
+        lobby.classList.add('lobby-entering');
+      }
+      document.querySelectorAll('.game-view-panel').forEach(p => {
+        p.classList.remove('active', 'game-exiting');
+        p.classList.add('hidden');
+      });
+      return;
+    }
+
+    activeGame.classList.add('game-exiting');
+    practiceTransitionTimer = setTimeout(() => {
+      activeGame.classList.remove('active', 'game-exiting');
+      activeGame.classList.add('hidden');
+
+      lobby.classList.remove('hidden', 'lobby-exiting');
+      lobby.classList.add('lobby-entering');
+
+      document.querySelectorAll('.game-view-panel').forEach(p => {
+        p.classList.remove('active', 'game-exiting');
+        p.classList.add('hidden');
+      });
+      practiceTransitionTimer = null;
+    }, 120);
   }
 
   function openPracticeGame(targetGame) {
     AudioPlayer.stop();
     const lobby = document.getElementById('practice-lobby');
-    if (lobby) lobby.classList.add('hidden');
-    const gamePanels = document.querySelectorAll('.game-view-panel');
-    gamePanels.forEach(panel => {
-      if (panel.id === `game-${targetGame}`) {
-        panel.classList.remove('hidden');
-        panel.classList.add('active');
-      } else {
-        panel.classList.remove('active');
-        panel.classList.add('hidden');
-      }
-    });
+    const targetPanel = document.getElementById(`game-${targetGame}`);
+    if (!targetPanel) return;
 
-    if (targetGame === 'flashcards' && State.flashcards.deck.length === 0) {
-      startFlashcards();
+    if (practiceTransitionTimer) {
+      clearTimeout(practiceTransitionTimer);
+      practiceTransitionTimer = null;
     }
+
+    if (isReducedMotion() || !lobby || lobby.classList.contains('hidden')) {
+      if (lobby) lobby.classList.add('hidden');
+      document.querySelectorAll('.game-view-panel').forEach(panel => {
+        if (panel.id === `game-${targetGame}`) {
+          panel.classList.remove('hidden', 'game-exiting');
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active', 'game-exiting');
+          panel.classList.add('hidden');
+        }
+      });
+      if (targetGame === 'flashcards' && State.flashcards.deck.length === 0) {
+        startFlashcards();
+      }
+      return;
+    }
+
+    lobby.classList.add('lobby-exiting');
+    practiceTransitionTimer = setTimeout(() => {
+      lobby.classList.remove('lobby-entering', 'lobby-exiting');
+      lobby.classList.add('hidden');
+
+      document.querySelectorAll('.game-view-panel').forEach(panel => {
+        if (panel.id === `game-${targetGame}`) {
+          panel.classList.remove('hidden', 'game-exiting');
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active', 'game-exiting');
+          panel.classList.add('hidden');
+        }
+      });
+
+      if (targetGame === 'flashcards' && State.flashcards.deck.length === 0) {
+        startFlashcards();
+      }
+      practiceTransitionTimer = null;
+    }, 120);
+  }
+
+  function switchMainSection(targetSection, onComplete) {
+    AudioPlayer.stop();
+    const currentActive = document.querySelector('.content-section.active:not(.hidden)');
+    const target = document.getElementById(`section-${targetSection}`);
+    const navTabs = document.querySelectorAll('.nav-tab');
+
+    navTabs.forEach(t => t.classList.toggle('active', t.dataset.section === targetSection));
+
+    if (!target) return;
+
+    if (currentActive && currentActive.id === `section-${targetSection}`) {
+      if (typeof onComplete === 'function') {
+        onComplete();
+      } else if (targetSection === 'practice') {
+        showPracticeLobby();
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    if (sectionTransitionTimer) {
+      clearTimeout(sectionTransitionTimer);
+      sectionTransitionTimer = null;
+    }
+
+    if (isReducedMotion() || !currentActive) {
+      document.querySelectorAll('.content-section').forEach(sec => {
+        if (sec.id === `section-${targetSection}`) {
+          sec.classList.remove('hidden', 'section-exiting');
+          sec.classList.add('active');
+        } else {
+          sec.classList.remove('active', 'section-exiting');
+          sec.classList.add('hidden');
+        }
+      });
+      if (typeof onComplete === 'function') {
+        onComplete();
+      } else if (targetSection === 'practice') {
+        showPracticeLobby();
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    currentActive.classList.add('section-exiting');
+    sectionTransitionTimer = setTimeout(() => {
+      currentActive.classList.remove('active', 'section-exiting');
+      currentActive.classList.add('hidden');
+
+      target.classList.remove('hidden', 'section-exiting');
+      target.classList.add('active');
+
+      if (typeof onComplete === 'function') {
+        onComplete();
+      } else if (targetSection === 'practice') {
+        showPracticeLobby();
+      }
+      sectionTransitionTimer = null;
+    }, 120);
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function setupNavigation() {
     const navTabs = document.querySelectorAll('.nav-tab');
-    const sections = document.querySelectorAll('.content-section');
 
     navTabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        AudioPlayer.stop();
         const targetSection = tab.dataset.section;
-
-        navTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        sections.forEach(sec => {
-          if (sec.id === `section-${targetSection}`) {
-            sec.classList.remove('hidden');
-            sec.classList.add('active');
-          } else {
-            sec.classList.remove('active');
-            sec.classList.add('hidden');
-          }
-        });
-
-        // Al hacer clic en Práctica, mostrar siempre el lobby principal de actividades
-        if (targetSection === 'practice') {
-          showPracticeLobby();
-        }
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        switchMainSection(targetSection);
       });
     });
 

@@ -265,17 +265,22 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: transform 0.1s, border-color 0.15s, background-color 0.15s;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.18s ease,
+              background-color 0.18s ease,
+              color 0.18s ease,
+              box-shadow 0.2s ease;
 }
 
 .nav-tab:hover {
   background: var(--rojo-fondo-suave);
   color: var(--rojo-raramuri);
   border-color: var(--rojo-raramuri);
+  transform: translateY(-1px);
 }
 
 .nav-tab:active {
-  transform: translateY(2px);
+  transform: translateY(2px) scale(0.97);
   border-bottom-width: 1px;
 }
 
@@ -284,6 +289,7 @@ body::before {
   color: var(--blanco-puro);
   border-color: var(--rojo-3d);
   border-bottom: 3px solid var(--rojo-3d);
+  box-shadow: 0 4px 14px rgba(194, 14, 34, 0.28);
 }
 
 .tab-icon {
@@ -303,13 +309,110 @@ body::before {
   flex: 1;
 }
 
+/* =========================================================
+   SISTEMA DE TRANSICIÓN SUAVE ENTRE SECCIONES (VIEW TRANSITIONS)
+   ========================================================= */
 .content-section {
   display: none;
-  animation: fadeIn 0.25s ease-out both;
+  opacity: 0;
 }
 
 .content-section.active {
   display: block;
+  animation: sectionReveal 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.content-section.section-exiting {
+  display: block;
+  animation: sectionDismiss 0.13s cubic-bezier(0.4, 0, 0.9, 1) both;
+  pointer-events: none;
+}
+
+@keyframes sectionReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.988);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sectionDismiss {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.992);
+  }
+}
+
+/* Entrada escalonada de elementos internos al activar sección */
+.content-section.active .section-header-row,
+.content-section.active .section-header-centered,
+.content-section.active .lexicon-editorial-header {
+  animation: childHeaderFadeIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.content-section.active .vocab-cards-grid {
+  animation: childBodyFadeIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) 0.04s both;
+}
+
+.content-section.active .about-narrative-card {
+  animation: childBodyFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+@keyframes childHeaderFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes childBodyFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Cascada fluida para las tarjetas de frases */
+.content-section.active .phrase-card-item {
+  animation: phraseCardStagger 0.36s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.content-section.active .phrase-card-item:nth-child(1) { animation-delay: 0.03s; }
+.content-section.active .phrase-card-item:nth-child(2) { animation-delay: 0.06s; }
+.content-section.active .phrase-card-item:nth-child(3) { animation-delay: 0.09s; }
+.content-section.active .phrase-card-item:nth-child(4) { animation-delay: 0.12s; }
+.content-section.active .phrase-card-item:nth-child(5) { animation-delay: 0.15s; }
+.content-section.active .phrase-card-item:nth-child(6) { animation-delay: 0.18s; }
+.content-section.active .phrase-card-item:nth-child(7) { animation-delay: 0.21s; }
+.content-section.active .phrase-card-item:nth-child(8) { animation-delay: 0.24s; }
+.content-section.active .phrase-card-item:nth-child(9) { animation-delay: 0.27s; }
+
+@keyframes phraseCardStagger {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .section-header-row {
@@ -1072,8 +1175,39 @@ body::before {
   width: 100%;
   max-width: 1140px;
   margin: 0 auto 36px;
-  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   padding: 0 16px;
+  animation: lobbyEnter 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.practice-lobby-section.lobby-entering {
+  animation: lobbyEnter 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.practice-lobby-section.lobby-exiting {
+  animation: lobbyExit 0.14s cubic-bezier(0.4, 0, 0.9, 1) both;
+  pointer-events: none;
+}
+
+@keyframes lobbyEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes lobbyExit {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.975);
+  }
 }
 
 .practice-lobby-header {
@@ -1395,13 +1529,41 @@ body::before {
 
 .game-view-panel {
   display: none;
-  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   width: 100%;
   box-sizing: border-box;
 }
 
 .game-view-panel.active {
   display: block;
+  animation: gamePanelHeroEnter 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.game-view-panel.game-exiting {
+  display: block;
+  animation: gamePanelHeroExit 0.14s cubic-bezier(0.4, 0, 0.9, 1) both;
+  pointer-events: none;
+}
+
+@keyframes gamePanelHeroEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gamePanelHeroExit {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
 }
 
 /* Diálogos de Juego con Transparencia de Papel Amate */
