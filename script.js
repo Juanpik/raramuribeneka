@@ -381,36 +381,40 @@
         const tab = document.querySelector('.nav-tab[data-section="about"]');
         if (tab) tab.click();
       } else if (urlParams.get('tab') === 'practice') {
-        const practiceTab = document.querySelector('.nav-tab[data-section="practice"]');
-        if (practiceTab) practiceTab.click();
         const mode = urlParams.get('mode');
         if (mode) {
-          openPracticeGame(mode);
-          if (urlParams.get('autostart') === 'true') {
-            if (mode === 'guess') {
-              document.getElementById('guess-start-btn')?.click();
-              const errs = parseInt(urlParams.get('errors'), 10);
-              if (!isNaN(errs) && errs > 0) {
-                State.guess.lives = Math.max(0, State.guess.maxLives - errs);
-                renderAhorcadoHUD();
-                if (State.guess.lives === 0) {
-                  triggerAhorcadoGameOver();
+          switchMainSection('practice', () => {
+            openPracticeGame(mode);
+            if (urlParams.get('autostart') === 'true') {
+              if (mode === 'guess') {
+                document.getElementById('guess-start-btn')?.click();
+                const errs = parseInt(urlParams.get('errors'), 10);
+                if (!isNaN(errs) && errs > 0) {
+                  State.guess.lives = Math.max(0, State.guess.maxLives - errs);
+                  renderAhorcadoHUD();
+                  if (State.guess.lives === 0) {
+                    triggerAhorcadoGameOver();
+                  }
+                }
+                const testGuesses = urlParams.get('test_guess');
+                if (testGuesses) {
+                  testGuesses.split(',').forEach((letter, idx) => {
+                    setTimeout(() => handleAhorcadoGuess(letter.trim()), idx * 450);
+                  });
                 }
               }
-              const testGuesses = urlParams.get('test_guess');
-              if (testGuesses) {
-                testGuesses.split(',').forEach((letter, idx) => {
-                  setTimeout(() => handleAhorcadoGuess(letter.trim()), idx * 450);
-                });
-              }
+              if (mode === 'quiz') document.getElementById('quiz-start-btn')?.click();
+              if (mode === 'memorama') document.getElementById('memorama-start-btn')?.click();
             }
-            if (mode === 'quiz') document.getElementById('quiz-start-btn')?.click();
-          }
-          if (urlParams.get('flip') === 'true' && mode === 'flashcards') {
-            setTimeout(() => {
-              toggleFlashcardFlip();
-            }, 300);
-          }
+            if (urlParams.get('flip') === 'true' && mode === 'flashcards') {
+              setTimeout(() => {
+                toggleFlashcardFlip();
+              }, 300);
+            }
+          });
+        } else {
+          const practiceTab = document.querySelector('.nav-tab[data-section="practice"]');
+          if (practiceTab) practiceTab.click();
         }
       }
 
