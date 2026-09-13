@@ -1,0 +1,175 @@
+/* Integración con la paleta, tipografía y botones de Rarámuri Be'neka! */
+.letter-illustration { mix-blend-mode: multiply; filter: none; transform: scale(1.12); }
+/* Blend the animated wrapper, not its isolated image, with the card. */
+:is(.card-wordsearch, .card-crossword) .activity-card-icon-wrap { mix-blend-mode: multiply; }
+:is(.card-wordsearch, .card-crossword) .letter-illustration { mix-blend-mode: normal; }
+.letter-game { max-width: 1120px; margin-inline: auto; }
+.letter-game .activity-top-bar { max-width: none; justify-content: flex-start; margin-inline: 0; }
+.letter-game-heading { margin: 12px 0; }
+.letter-game-heading h2 { font: 800 clamp(28px, 4vw, 38px)/1.15 var(--font-display); margin: 8px 0; }
+.letter-eyebrow { color: var(--rojo-raramuri); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.letter-game-tag { font-size: 12px; font-weight: 800; color: var(--carbon-secundario); }
+.letter-settings { display: flex; gap: 12px; align-items: end; flex-wrap: wrap; }
+.letter-settings label { display: grid; gap: 5px; font-size: 13px; font-weight: 800; flex: 1 1 170px; max-width: 300px; }
+.letter-settings select { width: 100%; min-height: 48px; padding: 10px; border: 2px solid var(--carbon-borde); border-radius: 12px; background: white; color: var(--carbon-tinta); font: inherit; }
+.letter-orthography, .letter-help-note { color: var(--carbon-secundario); font-size: 13px; margin: 16px 0; }
+.letter-feedback { color: var(--acierto-3d); font-weight: 700; margin: 10px 0; padding: 8px 12px; border-radius: 10px; background: var(--ocre-suave); }
+.letter-feedback:empty { display: none; }
+.letter-game h3 { font: 800 22px/1.3 var(--font-display); margin: 12px 0; }
+.letter-word-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 20px 0; }
+.letter-word-card { display: flex; flex-direction: column; align-items: start; gap: 10px; padding: 18px; border: 2px solid var(--carbon-borde); border-radius: 16px; background: var(--blanco-puro); }
+.letter-word-card strong { font: 700 23px/1.4 var(--font-native); color: var(--rojo-raramuri); overflow-wrap: anywhere; }
+.letter-progress { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin: 14px 0 10px; font-weight: 800; }
+.letter-progress progress { flex: 1; min-width: 100px; max-width: 480px; height: 16px; accent-color: var(--acierto-verde); }
+.letter-instructions { margin: 14px 0 20px; }
+.letter-play-layout { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(260px, 1fr); gap: 24px; align-items: start; }
+.letter-board-scroll { max-width: 100%; overflow-x: auto; padding: 5px 5px 16px; border-radius: 12px; }
+.letter-board { position: relative; display: grid; grid-template-columns: repeat(var(--letter-cols), minmax(24px, 1fr)); gap: 3px; width: 100%; min-width: calc(var(--letter-cols) * 27px - 3px); max-width: 550px; }
+#wordsearch-board, #wordsearch-board .letter-cell { touch-action: none; }
+.letter-selection-overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: visible; }
+.letter-stroke { stroke-width: 2.5; stroke-linejoin: round; }
+.letter-stroke.selecting { fill: rgba(229, 169, 60, .23); stroke: var(--ocre-3d); }
+.letter-stroke.solved { fill: rgba(46, 139, 87, .16); stroke: var(--acierto-verde); }
+#wordsearch-board .letter-glyph { position: relative; z-index: 2; }
+#wordsearch-board .letter-cell.is-selected { color: var(--carbon-tinta); background: var(--ocre-suave); border-color: var(--ocre-oro); }
+.letter-cell { position: relative; display: flex; align-items: center; justify-content: center; aspect-ratio: 1; min-width: 0; border: 1px solid var(--carbon-borde); border-bottom-width: 3px; border-radius: 6px; background: var(--blanco-puro); color: var(--carbon-tinta); font: 700 clamp(15px, 2.2vw, 22px)/1 var(--font-native); cursor: pointer; user-select: none; touch-action: manipulation; }
+.letter-cell:hover { background: var(--ocre-suave); }
+.letter-cell { transition: background-color .15s, border-color .15s; }
+.letter-block { background: var(--carbon-borde); opacity: .45; border: 0; cursor: default; }
+.letter-cell.is-active-clue { background: var(--ocre-suave); border-color: var(--ocre-3d); }
+.letter-cell.is-solved { background: var(--acierto-fondo); color: var(--acierto-3d); border-color: var(--acierto-verde); }
+.letter-cell.is-selected { background: var(--rojo-raramuri); color: white; border-color: var(--rojo-3d); }
+.letter-number { position: absolute; top: 2px; left: 3px; font: 800 10px/1 var(--font-ui); }
+.letter-clue-panel { min-width: 0; padding: 18px; background: white; border: 2px solid var(--carbon-borde); border-radius: 20px; }
+.letter-clues { display: flex; gap: 8px; justify-content: center; margin-bottom: 8px; }
+.letter-clue { text-align: center; padding: 8px; min-width: 48px; min-height: 44px; border: 2px solid transparent; border-radius: 12px; color: var(--carbon-tinta); background: var(--manta-fondo); font: 700 16px/1.35 var(--font-ui); cursor: pointer; }
+.letter-clue-image { display: block; width: 112px; height: 112px; object-fit: contain; margin: 4px auto; }
+.letter-clue-image[hidden], .letter-game [hidden] { display: none !important; }
+.letter-game .letter-clue-title { text-align: center; font-size: 27px; margin: 4px 0 10px; }
+.letter-word-help { text-align: center; color: var(--rojo-raramuri); font: 700 24px var(--font-native); }
+.letter-word-help:empty { display: none; }
+.letter-hint-buttons { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
+.letter-hint-buttons button { min-height: 44px; }
+.letter-clue[aria-pressed="true"] { border-color: var(--rojo-raramuri); background: var(--rojo-fondo-suave); }
+.letter-clue.is-solved { color: var(--acierto-3d); background: var(--acierto-fondo); }
+.letter-answer-form { display: grid; gap: 9px; margin: 10px 0; }
+.letter-answer-form label { font-weight: 800; }
+.letter-answer-form input { width: 100%; min-height: 48px; padding: 10px 12px; border: 2px solid var(--carbon-borde); border-radius: 10px; font: 18px/1.4 var(--font-native); }
+.letter-answer-form input[aria-invalid="true"] { border-color: var(--rojo-raramuri); }
+.letter-mask { font: 14px/1.6 var(--font-native); overflow-wrap: anywhere; }
+.letter-special-keys { display: flex; flex-wrap: wrap; gap: 6px; }
+.letter-special-key { width: 42px; height: 44px; border: 1px solid var(--carbon-borde); border-bottom-width: 3px; border-radius: 8px; background: var(--manta-fondo); font: 700 19px var(--font-native); cursor: pointer; }
+.letter-discovery { margin-top: 18px; }
+.letter-game :is(button, input, select, [tabindex]):focus-visible { outline: 3px solid var(--rojo-raramuri); outline-offset: 3px; }
+.letter-game button:disabled { opacity: .55; cursor: default; }
+.letter-game .duo-btn { white-space: normal; text-align: center; }
+.letter-input-cell { overflow: hidden; }
+.letter-input-cell input { display: block; width: 100%; height: 100%; min-width: 0; padding: 6px 0 0; background: transparent; border: 0; outline: 0; text-align: center; color: inherit; font: inherit; border-radius: inherit; caret-color: var(--rojo-raramuri); }
+.letter-input-cell:focus-within { outline: 3px solid var(--rojo-raramuri); outline-offset: 1px; z-index: 2; }
+.letter-input-cell input[aria-invalid="true"] { background: var(--rojo-fondo-suave); }
+.letter-input-cell .letter-number { pointer-events: none; }
+#game-crossword .letter-play-layout { grid-template-columns: minmax(0, 1fr); max-width: 660px; margin-inline: auto; gap: 14px; }
+#game-crossword .letter-clue-panel { grid-row: 1; display: grid; grid-template-columns: 60px 1fr auto; gap: 4px 12px; align-items: center; padding: 12px 16px; }
+#crossword-clues, #crossword-answer-area { display: none; }
+#crossword-clue-image { width: 60px; height: 60px; grid-row: 1 / span 2; margin: 0; }
+#game-crossword .letter-clue-title { text-align: left; font-size: 24px; margin: 0; }
+#crossword-word-help { grid-column: 2; text-align: left; font-size: 20px; }
+#game-crossword .letter-hint-buttons { grid-column: 3; grid-row: 1 / span 2; margin: 0; }
+#game-crossword .letter-board { margin-inline: auto; max-width: 580px; }
+#game-crossword .letter-instructions { text-align: center; }
+#game-crossword .letter-discovery { display: none; }
+@media (max-width: 760px) {
+  .letter-play-layout { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .letter-clue-panel { grid-row: 1; }
+  .letter-clue-image { width: 76px; height: 76px; }
+  .letter-game-tag { max-width: 130px; text-align: right; }
+  .letter-word-list { grid-template-columns: minmax(0, 1fr); }
+  .letter-board { max-width: 540px; margin-inline: auto; }
+  .letter-clues { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .letter-clue-panel { padding: 14px; }
+  #game-crossword .letter-clue-panel { grid-template-columns: 48px 1fr; padding: 10px; }
+  #crossword-clue-image { width: 48px; height: 48px; }
+  #game-crossword .letter-hint-buttons { grid-column: 2; grid-row: 3; justify-content: start; }
+  #game-crossword .letter-clue-title { font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .letter-game *, .card-wordsearch, .card-crossword { animation: none !important; transition: none !important; }
+}
+
+/* El tablero y su pista permanecen juntos, también en una pantalla estrecha. */
+#wordsearch-clues { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 10px; }
+#wordsearch-clues .letter-clue { min-height: 36px; padding: 3px 0; gap: 7px; border: 0; border-radius: 0; background: transparent; cursor: default; font-size: 14px; }
+#wordsearch-clues .letter-clue img { width: 28px; height: 28px; }
+#wordsearch-clues .letter-clue.is-solved { opacity: .6; text-decoration: none; }
+@media (max-width: 760px) {
+  #wordsearch-clues { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.letter-setup { display: flex; flex-direction: column; max-width: 700px; margin-inline: auto; }
+.letter-setup-icon { display: block; width: 100px; height: 100px; object-fit: contain; margin: 0 auto 16px; }
+.letter-setup .input-selection-group { text-align: left; }
+.letter-setup .styled-dropdown { width: 100%; }
+.letter-setup > .duo-btn { align-self: center; margin-top: 24px; }
+.letter-options { margin-bottom: 8px; }
+.letter-game { max-width: 700px; }
+.letter-game .activity-top-bar { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.letter-game .activity-top-bar h2 { font: 800 clamp(23px, 4vw, 34px)/1.1 var(--font-display); }
+.letter-settings { flex-wrap: nowrap; align-items: end; }
+.letter-settings label { max-width: none; min-width: 0; }
+.letter-settings select { min-width: 0; }
+#game-wordsearch .letter-clue-panel { display: none; }
+#wordsearch-clues { grid-row: 1; width: 100%; margin: 0; max-width: 520px; justify-self: center; }
+#wordsearch-clues .letter-clue { display: flex; align-items: center; gap: 7px; padding: 3px 0; text-align: left; font: 700 14px/1.25 var(--font-ui); }
+#wordsearch-clues .letter-clue img { width: 28px; height: 28px; object-fit: contain; flex-shrink: 0; }
+.letter-settings > button { flex-shrink: 0; min-height: 46px; }
+.letter-progress { margin: 12px 0 8px; font-size: 14px; }
+.letter-instructions { margin: 8px 0 12px; font-size: 14px; }
+.letter-play-layout, #game-crossword .letter-play-layout { grid-template-columns: minmax(0, 1fr); max-width: 560px; margin-inline: auto; gap: 10px; }
+.letter-clue-panel, #game-crossword .letter-clue-panel { grid-row: 1; display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; align-items: center; gap: 2px 12px; padding: 10px 14px; border-radius: 16px; }
+.letter-clue-image, #crossword-clue-image { width: 56px; height: 56px; margin: 0; grid-row: 1 / span 2; }
+.letter-game .letter-clue-title { text-align: left; font-size: 18px; margin: 0; grid-column: 2; }
+.letter-word-help { text-align: left; font-size: 24px; grid-column: 2; grid-row: 2; }
+.letter-hint-buttons, #game-crossword .letter-hint-buttons { grid-column: 3; grid-row: 1 / span 2; margin: 0; }
+.letter-hint-buttons button { padding: 8px 10px; }
+.letter-board-scroll { padding: 3px; overflow-x: auto; }
+.letter-board, #game-crossword .letter-board { max-width: 520px; margin-inline: auto; }
+#wordsearch-board { background: white; border: 1px solid var(--carbon-borde); border-radius: 16px; padding: 0; gap: 3px; overflow: visible; }
+#wordsearch-board .letter-cell { border: 0; background: transparent; border-radius: 8px; font-family: var(--font-ui); font-size: clamp(19px, 4vw, 25px); }
+#wordsearch-board .letter-cell.is-solved { color: var(--acierto-3d); }
+#wordsearch-board .letter-cell:hover { background: var(--ocre-suave); }
+.letter-clues { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 520px; margin: 12px auto 0; gap: 8px; }
+.letter-clue { font-family: var(--font-native); min-width: 0; overflow-wrap: anywhere; background: white; border-color: var(--carbon-borde); }
+.letter-clue.is-solved { text-decoration: line-through; }
+.letter-discovery, #crossword-answer-area { display: none; }
+.letter-feedback { font-size: 14px; min-height: 38px; margin: 8px 0; }
+.letter-feedback:empty { display: block; visibility: hidden; }
+#game-crossword .letter-block { background: transparent; }
+#game-crossword .letter-input-cell { font-size: clamp(18px, 4.5vw, 25px); }
+@media (max-width: 760px) {
+  .letter-game .activity-top-bar { gap: 10px; margin-bottom: 10px; }
+  .letter-game .back-to-lobby-btn { padding: 8px 10px; font-size: 12px; }
+  .letter-settings { gap: 8px; }
+  .letter-settings label { font-size: 12px; }
+  .letter-settings select { min-height: 42px; padding: 8px; }
+  .letter-settings > button { min-height: 42px; padding: 8px 10px; font-size: 12px; }
+  .letter-clue-panel, #game-crossword .letter-clue-panel { grid-template-columns: 44px minmax(0, 1fr) auto; gap: 2px 8px; padding: 8px 10px; }
+  .letter-clue-image, #crossword-clue-image { width: 44px; height: 44px; }
+  .letter-game .letter-clue-title { font-size: 16px; }
+  .letter-word-help { font-size: 21px; }
+  .letter-hint-buttons button { font-size: 12px; }
+  #game-crossword .letter-clue-title { font-size: 20px; }
+  .letter-game .letter-instructions { text-align: center; font-size: 13px; }
+}
+
+/* Shared activity shell: the same dialog and typography as Quiz and Memorama. */
+.letter-game h3.dialog-title { font: 800 2.1rem/1.2 var(--font-display); margin: 0 0 8px; }
+.letter-game .activity-top-bar { margin-bottom: 20px; }
+.letter-game .letter-instructions { text-align: center; color: var(--carbon-secundario); margin: 8px 0 20px; }
+.letter-play-card { min-width: 0; }
+.letter-game .letter-feedback { max-width: 700px; }
+@media (max-width: 760px) {
+  .letter-game .card-dialog { padding: 18px 12px; }
+  .letter-game h3.dialog-title { font-size: 1.6rem; }
+  .letter-game .back-to-lobby-btn { padding: 8px 18px; font-size: .92rem; }
+  .letter-game .letter-instructions { margin-bottom: 14px; }
+}
+

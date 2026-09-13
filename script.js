@@ -282,6 +282,7 @@
   async function initApp() {
     Confetti.init();
     loadRepasarFromStorage();
+    window.LetterGames.mount();
     setupNavigation();
 
     try {
@@ -333,18 +334,26 @@
       setupQuiz();
       setupMemorama();
       setupFlashcards();
+      window.LetterGames.setup({
+        getWords: getWordsBySelection,
+        playAudio: src => AudioPlayer.play(src),
+        stopAudio: () => AudioPlayer.stop(),
+        onReview: id => {
+          State.repasarIds.add(id);
+          saveRepasarToStorage();
+          renderLexicon();
+        }
+      });
 
       // Navegación profunda opcional por hash o query (ej: #memorama, ?game=memorama&pairs=8)
       const hash = (window.location.hash || '').replace('#', '').toLowerCase();
       const urlParams = new URLSearchParams(window.location.search);
-      const targetGame = hash === 'memorama' || hash === 'quiz' || hash === 'guess' || hash === 'flashcards' 
+      const targetGame = ['memorama', 'quiz', 'guess', 'flashcards', 'wordsearch', 'crossword'].includes(hash)
         ? hash 
         : urlParams.get('game');
 
       if (targetGame) {
-        const practiceTab = document.querySelector('.nav-tab[data-section="practice"]');
-        if (practiceTab) practiceTab.click();
-        openPracticeGame(targetGame);
+        switchMainSection('practice', () => openPracticeGame(targetGame));
 
         if (targetGame === 'memorama') {
           const pairsParam = parseInt(urlParams.get('pairs'), 10);
@@ -496,7 +505,7 @@
   }
 
   function populateDropdowns() {
-    const dropdownIds = ['guess-category', 'quiz-category', 'memorama-category', 'flashcard-category-select'];
+    const dropdownIds = ['guess-category', 'quiz-category', 'memorama-category', 'flashcard-category-select', 'wordsearch-category', 'crossword-category'];
     const repasarCount = State.repasarIds.size;
 
     dropdownIds.forEach(selectId => {
@@ -582,6 +591,7 @@
     const lobby = document.getElementById('practice-lobby');
     const targetPanel = document.getElementById(`game-${targetGame}`);
     if (!targetPanel) return;
+    window.LetterGames.open(targetGame);
 
     if (practiceTransitionTimer) {
       clearTimeout(practiceTransitionTimer);
@@ -691,6 +701,12 @@
   }
 
   function setupNavigation() {
+    window.addEventListener('hashchange', () => {
+      const game = window.location.hash.slice(1).toLowerCase();
+      if (['guess', 'quiz', 'memorama', 'flashcards', 'wordsearch', 'crossword'].includes(game)) {
+        switchMainSection('practice', () => openPracticeGame(game));
+      }
+    });
     const navTabs = document.querySelectorAll('.nav-tab');
 
     navTabs.forEach(tab => {
@@ -1950,3 +1966,4 @@
   });
 
 })();
+

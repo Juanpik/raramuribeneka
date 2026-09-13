@@ -1329,20 +1329,24 @@ body::before {
 }
 
 /* Paletas de Color Específicas por Tarjeta */
-.practice-activity-card.card-guess {
+.practice-activity-card.card-guess,
+.practice-activity-card.card-crossword {
   background: #FDF1EE;
   border-color: rgba(220, 85, 70, 0.22);
 }
-.practice-activity-card.card-guess .activity-card-greca {
+.practice-activity-card.card-guess .activity-card-greca,
+.practice-activity-card.card-crossword .activity-card-greca {
   background-color: #F9DCD5;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='20' viewBox='0 0 22 20' fill='none'%3E%3Cpolyline points='0,15 11,5 22,15' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
-.practice-activity-card.card-quiz {
+.practice-activity-card.card-quiz,
+.practice-activity-card.card-wordsearch {
   background: #FFF8EB;
   border-color: rgba(230, 175, 60, 0.26);
 }
-.practice-activity-card.card-quiz .activity-card-greca {
+.practice-activity-card.card-quiz .activity-card-greca,
+.practice-activity-card.card-wordsearch .activity-card-greca {
   background-color: #FDE8C0;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='20' viewBox='0 0 22 20' fill='none'%3E%3Cpolyline points='0,15 11,5 22,15' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
@@ -3389,4 +3393,5 @@ body::before {
     padding: 2px 4px;
   }
 }
+
 

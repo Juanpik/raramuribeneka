@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rarámuri Be'neka!</title>
-    <meta name="description" content="Aplicación interactiva para el aprendizaje de la lengua rarámuri (tarahumara): palabras, frases, memorama, quiz, flashcards y ahorcado.">
+    <meta name="description" content="Aprende rarámuri con palabras, frases, memorama, quiz, flashcards, adivinanzas, sopa de letras y crucigramas.">
 
     <!-- Tipografías: Instrument Serif (Editorial / Títulos), Space Mono (Rarámuri) y Plus Jakarta Sans (UI) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,9 +17,11 @@
     <link rel="icon" type="image/png" href="images/favicon.png?v=2">
     <link rel="shortcut icon" href="favicon.ico?v=2">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="letter-games.css">
     <script src="data.js" defer></script>
     <script src="contours.js?v=2" defer></script>
-    <script src="script.js?v=3" defer></script>
+    <script src="letter-games.js" defer></script>
+    <script src="script.js?v=4" defer></script>
 </head>
 <body>
     <!-- Pantalla de Carga -->
@@ -159,6 +161,34 @@
                 </div>
 
                 <div class="practice-cards-grid">
+                    <button type="button" class="practice-activity-card card-wordsearch" data-game="wordsearch">
+                        <div class="activity-card-icon-wrap"><img src="images/practice_icons/act_wordsearch.png" alt="" class="activity-card-icon letter-illustration"></div>
+                        <div class="activity-card-body">
+                            <h3 class="activity-card-title">Sopa de letras</h3>
+                            <p class="activity-card-desc">¡Encuentra las palabras en rarámuri!</p>
+                        </div>
+                        <div class="activity-card-action-btn" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                        <div class="activity-card-greca" aria-hidden="true"></div>
+                    </button>
+                    <button type="button" class="practice-activity-card card-crossword" data-game="crossword">
+                        <div class="activity-card-icon-wrap"><img src="images/practice_icons/act_crossword.png" alt="" class="activity-card-icon letter-illustration"></div>
+                        <div class="activity-card-body">
+                            <h3 class="activity-card-title">Crucigrama</h3>
+                            <p class="activity-card-desc">Mira el dibujo y escribe en rarámuri.</p>
+                        </div>
+                        <div class="activity-card-action-btn" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                        <div class="activity-card-greca" aria-hidden="true"></div>
+                    </button>
                     <!-- Tarjeta 1: Adivina la palabra -->
                     <button type="button" class="practice-activity-card card-guess" data-game="guess">
                         <div class="activity-card-icon-wrap">
@@ -233,6 +263,8 @@
                 </div>
             </div>
 
+            <div id="game-wordsearch" class="game-view-panel hidden letter-game"></div>
+            <div id="game-crossword" class="game-view-panel hidden letter-game"></div>
             <!-- MODO 1: Adivina la palabra (5 vidas y Game Over) -->
             <!-- MODO 1: Adivina la Palabra -->
             <div id="game-guess" class="game-view-panel hidden">
@@ -516,3 +548,4 @@
     <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
 </body>
 </html>
+
