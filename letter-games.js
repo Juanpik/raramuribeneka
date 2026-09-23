@@ -238,10 +238,6 @@
         <section id="${mode}-preview-area" class="card-dialog letter-preview-card hidden" aria-labelledby="${mode}-preview-title">
           <h3 id="${mode}-preview-title" class="dialog-title">Repasar antes de jugar</h3>
           <p class="dialog-subtitle" id="${mode}-preview-subtitle">Estudia las palabras antes de resolver el ${titles[mode].toLowerCase()}.</p>
-          <div class="letter-preview-tabs-row" id="${mode}-preview-tabs">
-            <button type="button" class="pill-toggle active" id="${mode}-preview-tab-round" data-tab="round">Palabras de la partida</button>
-            <button type="button" class="pill-toggle" id="${mode}-preview-tab-all" data-tab="all">Todas las del tema</button>
-          </div>
           <div id="${mode}-preview-list" class="letter-preview-grid"></div>
           <div class="letter-preview-actions">
             <button type="button" id="${mode}-preview-back" class="duo-btn secondary large">← Volver a ajustes</button>
@@ -279,7 +275,10 @@
       el(mode, 'start').addEventListener('click', () => prepare(mode));
       el(mode, 'preview').addEventListener('click', () => showPreview(mode, false));
       el(mode, 'again').addEventListener('click', () => showSetup(mode));
-      el(mode, 'category').addEventListener('change', () => message(mode, ''));
+      el(mode, 'category').addEventListener('change', () => {
+        sessions[mode] = null;
+        message(mode, '');
+      });
       el(mode, 'peek-review')?.addEventListener('click', () => showPreview(mode, true));
       el(mode, 'preview-back').addEventListener('click', () => {
         services.stopAudio();
@@ -297,21 +296,12 @@
           el(mode, 'play-area').classList.remove('hidden');
         } else {
           el(mode, 'discovery').replaceChildren();
-          play(mode);
+          prepare(mode);
         }
-      });
-      el(mode, 'preview-tab-round').addEventListener('click', () => {
-        el(mode, 'preview-tab-round').classList.add('active');
-        el(mode, 'preview-tab-all').classList.remove('active');
-        renderPreviewCards(mode, 'round');
-      });
-      el(mode, 'preview-tab-all').addEventListener('click', () => {
-        el(mode, 'preview-tab-all').classList.add('active');
-        el(mode, 'preview-tab-round').classList.remove('active');
-        renderPreviewCards(mode, 'all');
       });
       el(mode, 'count-options').querySelectorAll('button').forEach(button => {
         button.addEventListener('click', () => {
+          sessions[mode] = null;
           el(mode, 'count-options').querySelectorAll('button').forEach(option => {
             option.classList.toggle('active', option === button);
             option.setAttribute('aria-pressed', String(option === button));
@@ -434,31 +424,13 @@
   function showPreview(mode, isPeek = false) {
     services.stopAudio();
     const categoryVal = el(mode, 'category').value;
-    const words = services.getWords(categoryVal).filter(word => normalize(word.raramuri).length <= 8);
+    const words = vocabulary(services.getWords(categoryVal).filter(word => normalize(word.raramuri).length <= 8));
     const count = Number(el(mode, 'count-options').querySelector('.active').dataset.count);
 
-    if (vocabulary(words).length < count) {
+    if (words.length < count) {
       message(mode, `Este tema no tiene ${count} palabras para el tablero. Elige menos palabras u otro tema.`);
       return;
     }
-
-    if (!sessions[mode] || !sessions[mode].puzzle) {
-      const puzzle = mode === 'wordsearch' ? makeWordsearch(words, Math.random, count)
-        : makeCrossword(words, Math.random, count === 4 ? 9 : count === 6 ? 11 : 13, count);
-      if (!puzzle) {
-        message(mode, mode === 'wordsearch'
-          ? 'Aquí todavía no hay palabras para jugar. Elige otro tema.'
-          : 'Estas palabras no se pueden cruzar. Elige otro tema.');
-        return;
-      }
-      if (puzzle.entries.length !== count) {
-        message(mode, `No se pudo formar un tablero con ${count} palabras de este tema. Prueba otra vez, otro tema o menos palabras.`);
-        return;
-      }
-      sessions[mode] = { puzzle, solved: new Set(), assisted: new Set(), active: 0, start: null, values: new Map(), invalid: new Set(), phase: 'setup' };
-    }
-
-    sessions[mode].isPeek = isPeek;
 
     if (isPeek) {
       el(mode, 'play-area').classList.add('hidden');
@@ -470,29 +442,29 @@
       el(mode, 'preview-play').textContent = '¡Comenzar a jugar! →';
     }
 
+    if (!sessions[mode]) {
+      sessions[mode] = { isPeek, phase: 'setup' };
+    } else {
+      sessions[mode].isPeek = isPeek;
+    }
+
     ['results'].forEach(name => el(mode, name)?.classList.add('hidden'));
     el(mode, 'preview-area').classList.remove('hidden');
 
-    const totalInCat = vocabulary(words).length;
-    el(mode, 'preview-tab-round').textContent = `Palabras de la partida (${sessions[mode].puzzle.entries.length})`;
-    el(mode, 'preview-tab-all').textContent = `Todas las del tema (${totalInCat})`;
-    el(mode, 'preview-tab-round').classList.add('active');
-    el(mode, 'preview-tab-all').classList.remove('active');
+    const catSelect = el(mode, 'category');
+    const selectedOptionText = catSelect.options[catSelect.selectedIndex]?.textContent || categoryVal;
+    const cleanCatName = selectedOptionText.replace(/\s*\(\d+\)$/, '');
+    el(mode, 'preview-subtitle').textContent = `Estudia las palabras de ${cleanCatName} (${words.length}) antes de resolver el ${titles[mode].toLowerCase()}.`;
 
-    renderPreviewCards(mode, 'round');
+    renderPreviewCards(mode, words);
     message(mode, '');
   }
 
-  function renderPreviewCards(mode, tab) {
+  function renderPreviewCards(mode, words) {
     const listEl = el(mode, 'preview-list');
     listEl.replaceChildren();
 
-    const categoryVal = el(mode, 'category').value;
-    const allWords = vocabulary(services.getWords(categoryVal).filter(word => normalize(word.raramuri).length <= 8));
-    const roundWords = sessions[mode]?.puzzle?.entries?.map(e => e.word) || [];
-    const wordsToShow = tab === 'all' ? allWords : roundWords;
-
-    wordsToShow.forEach(word => {
+    words.forEach(word => {
       const card = node('div', undefined, 'letter-word-card letter-preview-card-item');
 
       const topRow = node('div', undefined, 'preview-card-top');
