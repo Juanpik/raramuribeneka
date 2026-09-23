@@ -338,6 +338,7 @@
         getWords: getWordsBySelection,
         playAudio: src => AudioPlayer.play(src),
         stopAudio: () => AudioPlayer.stop(),
+        isReviewed: id => State.repasarIds.has(id),
         onReview: id => {
           State.repasarIds.add(id);
           saveRepasarToStorage();
@@ -414,6 +415,16 @@
               }
               if (mode === 'quiz') document.getElementById('quiz-start-btn')?.click();
               if (mode === 'memorama') document.getElementById('memorama-start-btn')?.click();
+              if (mode === 'wordsearch' || mode === 'crossword') {
+                if (urlParams.get('preview') === 'true') {
+                  document.getElementById(`${mode}-preview`)?.click();
+                } else {
+                  document.getElementById(`${mode}-start`)?.click();
+                }
+              }
+            }
+            if (urlParams.get('preview') === 'true' && (mode === 'wordsearch' || mode === 'crossword')) {
+              document.getElementById(`${mode}-preview`)?.click();
             }
             if (urlParams.get('flip') === 'true' && mode === 'flashcards') {
               setTimeout(() => {

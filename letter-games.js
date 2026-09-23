@@ -209,6 +209,10 @@
       panel.innerHTML = `
         <div class="activity-top-bar">
           <button type="button" class="back-to-lobby-btn duo-btn secondary small" aria-label="Volver a actividades">← Volver a las actividades</button>
+          <button type="button" id="${mode}-peek-review" class="duo-btn secondary small letter-peek-btn hidden" title="Repasar palabras de la partida">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            <span>Repasar palabras</span>
+          </button>
         </div>
         <section id="${mode}-setup" class="card-dialog letter-setup" aria-labelledby="${mode}-setup-title">
           <h3 id="${mode}-setup-title" class="dialog-title">${titles[mode]}</h3>
@@ -223,7 +227,26 @@
               ${[4, 6, 8].map(count => `<button type="button" class="pill-toggle${count === 4 ? ' active' : ''}" data-count="${count}" aria-pressed="${count === 4}">${count}</button>`).join('')}
             </div>
           </div>
-          <button type="button" id="${mode}-start" class="duo-btn primary large">Jugar</button>
+          <div class="letter-setup-actions">
+            <button type="button" id="${mode}-preview" class="duo-btn secondary large letter-preview-btn">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+              <span>Repasar antes</span>
+            </button>
+            <button type="button" id="${mode}-start" class="duo-btn primary large letter-start-btn">Jugar</button>
+          </div>
+        </section>
+        <section id="${mode}-preview-area" class="card-dialog letter-preview-card hidden" aria-labelledby="${mode}-preview-title">
+          <h3 id="${mode}-preview-title" class="dialog-title">Repasar antes de jugar</h3>
+          <p class="dialog-subtitle" id="${mode}-preview-subtitle">Estudia las palabras antes de resolver el ${titles[mode].toLowerCase()}.</p>
+          <div class="letter-preview-tabs-row" id="${mode}-preview-tabs">
+            <button type="button" class="pill-toggle active" id="${mode}-preview-tab-round" data-tab="round">Palabras de la partida</button>
+            <button type="button" class="pill-toggle" id="${mode}-preview-tab-all" data-tab="all">Todas las del tema</button>
+          </div>
+          <div id="${mode}-preview-list" class="letter-preview-grid"></div>
+          <div class="letter-preview-actions">
+            <button type="button" id="${mode}-preview-back" class="duo-btn secondary large">← Volver a ajustes</button>
+            <button type="button" id="${mode}-preview-play" class="duo-btn primary large">¡Comenzar a jugar! →</button>
+          </div>
         </section>
         <section id="${mode}-play-area" class="card-dialog letter-play-card hidden">
           <h3 class="dialog-title">${titles[mode]}</h3>
@@ -254,8 +277,39 @@
     services = dependencies;
     modes.forEach(mode => {
       el(mode, 'start').addEventListener('click', () => prepare(mode));
+      el(mode, 'preview').addEventListener('click', () => showPreview(mode, false));
       el(mode, 'again').addEventListener('click', () => showSetup(mode));
       el(mode, 'category').addEventListener('change', () => message(mode, ''));
+      el(mode, 'peek-review')?.addEventListener('click', () => showPreview(mode, true));
+      el(mode, 'preview-back').addEventListener('click', () => {
+        services.stopAudio();
+        el(mode, 'preview-area').classList.add('hidden');
+        if (sessions[mode]?.isPeek) {
+          el(mode, 'play-area').classList.remove('hidden');
+        } else {
+          el(mode, 'setup').classList.remove('hidden');
+        }
+      });
+      el(mode, 'preview-play').addEventListener('click', () => {
+        services.stopAudio();
+        el(mode, 'preview-area').classList.add('hidden');
+        if (sessions[mode]?.isPeek) {
+          el(mode, 'play-area').classList.remove('hidden');
+        } else {
+          el(mode, 'discovery').replaceChildren();
+          play(mode);
+        }
+      });
+      el(mode, 'preview-tab-round').addEventListener('click', () => {
+        el(mode, 'preview-tab-round').classList.add('active');
+        el(mode, 'preview-tab-all').classList.remove('active');
+        renderPreviewCards(mode, 'round');
+      });
+      el(mode, 'preview-tab-all').addEventListener('click', () => {
+        el(mode, 'preview-tab-all').classList.add('active');
+        el(mode, 'preview-tab-round').classList.remove('active');
+        renderPreviewCards(mode, 'all');
+      });
       el(mode, 'count-options').querySelectorAll('button').forEach(button => {
         button.addEventListener('click', () => {
           el(mode, 'count-options').querySelectorAll('button').forEach(option => {
@@ -371,14 +425,122 @@
   function showSetup(mode) {
     services.stopAudio();
     sessions[mode] = null;
-    ['play-area', 'results'].forEach(name => el(mode, name).classList.add('hidden'));
+    el(mode, 'peek-review')?.classList.add('hidden');
+    ['play-area', 'results', 'preview-area'].forEach(name => el(mode, name)?.classList.add('hidden'));
     el(mode, 'setup').classList.remove('hidden');
     message(mode, '');
   }
 
+  function showPreview(mode, isPeek = false) {
+    services.stopAudio();
+    const categoryVal = el(mode, 'category').value;
+    const words = services.getWords(categoryVal).filter(word => normalize(word.raramuri).length <= 8);
+    const count = Number(el(mode, 'count-options').querySelector('.active').dataset.count);
+
+    if (vocabulary(words).length < count) {
+      message(mode, `Este tema no tiene ${count} palabras para el tablero. Elige menos palabras u otro tema.`);
+      return;
+    }
+
+    if (!sessions[mode] || !sessions[mode].puzzle) {
+      const puzzle = mode === 'wordsearch' ? makeWordsearch(words, Math.random, count)
+        : makeCrossword(words, Math.random, count === 4 ? 9 : count === 6 ? 11 : 13, count);
+      if (!puzzle) {
+        message(mode, mode === 'wordsearch'
+          ? 'Aquí todavía no hay palabras para jugar. Elige otro tema.'
+          : 'Estas palabras no se pueden cruzar. Elige otro tema.');
+        return;
+      }
+      if (puzzle.entries.length !== count) {
+        message(mode, `No se pudo formar un tablero con ${count} palabras de este tema. Prueba otra vez, otro tema o menos palabras.`);
+        return;
+      }
+      sessions[mode] = { puzzle, solved: new Set(), assisted: new Set(), active: 0, start: null, values: new Map(), invalid: new Set(), phase: 'setup' };
+    }
+
+    sessions[mode].isPeek = isPeek;
+
+    if (isPeek) {
+      el(mode, 'play-area').classList.add('hidden');
+      el(mode, 'preview-back').textContent = '← Volver a la partida';
+      el(mode, 'preview-play').textContent = 'Continuar partida →';
+    } else {
+      el(mode, 'setup').classList.add('hidden');
+      el(mode, 'preview-back').textContent = '← Volver a ajustes';
+      el(mode, 'preview-play').textContent = '¡Comenzar a jugar! →';
+    }
+
+    ['results'].forEach(name => el(mode, name)?.classList.add('hidden'));
+    el(mode, 'preview-area').classList.remove('hidden');
+
+    const totalInCat = vocabulary(words).length;
+    el(mode, 'preview-tab-round').textContent = `Palabras de la partida (${sessions[mode].puzzle.entries.length})`;
+    el(mode, 'preview-tab-all').textContent = `Todas las del tema (${totalInCat})`;
+    el(mode, 'preview-tab-round').classList.add('active');
+    el(mode, 'preview-tab-all').classList.remove('active');
+
+    renderPreviewCards(mode, 'round');
+    message(mode, '');
+  }
+
+  function renderPreviewCards(mode, tab) {
+    const listEl = el(mode, 'preview-list');
+    listEl.replaceChildren();
+
+    const categoryVal = el(mode, 'category').value;
+    const allWords = vocabulary(services.getWords(categoryVal).filter(word => normalize(word.raramuri).length <= 8));
+    const roundWords = sessions[mode]?.puzzle?.entries?.map(e => e.word) || [];
+    const wordsToShow = tab === 'all' ? allWords : roundWords;
+
+    wordsToShow.forEach(word => {
+      const card = node('div', undefined, 'letter-word-card letter-preview-card-item');
+
+      const topRow = node('div', undefined, 'preview-card-top');
+      if (word.image) {
+        const img = node('img', undefined, 'preview-card-img');
+        img.alt = '';
+        img.src = word.image;
+        img.onerror = () => {
+          if (img.src.includes('_nobg.png')) img.src = img.src.replace('_nobg.png', '.jpg');
+          else img.hidden = true;
+        };
+        topRow.append(img);
+      }
+
+      const texts = node('div', undefined, 'preview-card-texts');
+      const raramuriEl = node('strong', word.raramuri, 'preview-word-raramuri');
+      const spanishEl = node('span', word.spanish, 'preview-word-spanish');
+      texts.append(raramuriEl, spanishEl);
+      topRow.append(texts);
+      card.append(topRow);
+
+      const actionsRow = node('div', undefined, 'preview-card-actions');
+      if (word.audio) {
+        const audioBtn = button('Escuchar', () => services.playAudio(word.audio), 'duo-btn secondary small preview-audio-btn');
+        audioBtn.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg> <span>Escuchar</span>`;
+        audioBtn.setAttribute('aria-label', `Escuchar ${word.raramuri}`);
+        actionsRow.append(audioBtn);
+      }
+
+      const isMarked = services.isReviewed ? services.isReviewed(word.id) : (sessions[mode]?.assisted?.has(word.id));
+      const saveBtn = button(isMarked ? '✓ En repaso' : '⭐ Repasar', () => {
+        if (services.onReview) {
+          services.onReview(word.id);
+          saveBtn.textContent = '✓ En lista de repaso';
+          saveBtn.classList.add('is-reviewed');
+        }
+      }, 'duo-btn secondary small preview-save-btn');
+      if (isMarked) saveBtn.classList.add('is-reviewed');
+      actionsRow.append(saveBtn);
+
+      card.append(actionsRow);
+      listEl.append(card);
+    });
+  }
+
   function prepare(mode) {
     services.stopAudio();
-    ['play-area', 'results'].forEach(name => el(mode, name).classList.add('hidden'));
+    ['play-area', 'results', 'preview-area'].forEach(name => el(mode, name)?.classList.add('hidden'));
     const words = services.getWords(el(mode, 'category').value).filter(word => normalize(word.raramuri).length <= 8);
     const count = Number(el(mode, 'count-options').querySelector('.active').dataset.count);
     if (vocabulary(words).length < count) {
@@ -409,6 +571,8 @@
     if (!state) return;
     state.phase = 'play';
     services.stopAudio();
+    ['setup', 'results', 'preview-area'].forEach(name => el(mode, name)?.classList.add('hidden'));
+    el(mode, 'peek-review')?.classList.remove('hidden');
     el(mode, 'play-area').classList.remove('hidden');
     buildBoard(mode);
     renderClues(mode);
@@ -681,6 +845,7 @@
     if (next < 0) {
       state.phase = 'complete';
       if (el(mode, 'hint')) el(mode, 'hint').disabled = true;
+      el(mode, 'peek-review')?.classList.add('hidden');
       el(mode, 'play-area').classList.add('hidden');
       el(mode, 'results').classList.remove('hidden');
       el(mode, 'summary').textContent = `¡Jugaste con ${state.solved.size} palabras en rarámuri!`;
